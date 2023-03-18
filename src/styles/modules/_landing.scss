@@ -1,0 +1,29 @@
+.heading-item {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  position: relative;
+  text-transform: uppercase;
+  padding: 0 10px;
+  width: max-content;
+  color: var(--primary-blue-200);
+
+  &:before,
+  &:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 6px;
+    aspect-ratio: 1/1;
+    border-radius: 1rem;
+    top: 50%;
+    translate: 0 -50%;
+    background-color: var(--primary-blue-200);
+  }
+  &:before {
+    left: 0;
+  }
+  &:after {
+    right: 0;
+  }
+}

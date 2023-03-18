@@ -1,5 +1,21 @@
+import Navbar from "./components/Navbar";
+import SharedLayout from "./components/SharedLayout";
+import { Routes, Route } from "react-router-dom";
+import { About, Business, Landing, Resources, Services, Error } from "./pages";
+
 function App() {
-  return <div className="App">hello</div>;
+  return (
+    <SharedLayout>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/business-processes" element={<Business />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </SharedLayout>
+  );
 }
 
 export default App;

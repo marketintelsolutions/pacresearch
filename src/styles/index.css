@@ -1,0 +1,23 @@
+*,
+body,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background: var(--primary-blue);
+}
+
+:root {
+  --primary-blue: #15284a;
+  --primary-blue-100: #09aff4;
+  --primary-blue-200: #5b9bd5;
+  --secondary-grey: #a4a4a4;
+  --transition: all 0.2s linear;
+  --transition-ease: all 0.3s ease-in-out;
+  --width-standard: 1156px;
+}
