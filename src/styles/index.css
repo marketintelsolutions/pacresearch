@@ -13,7 +13,7 @@ body {
 }
 
 :root {
-  --primary-blue: #15284a;
+  --primary-blue: #15284a; /*rgb(21, 40, 74)*/
   --primary-blue-100: #09aff4;
   --primary-blue-200: #5b9bd5;
   --secondary-grey: #a4a4a4;
