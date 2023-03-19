@@ -1,11 +1,16 @@
 .navbar {
   // border: 2px solid red;
   min-height: 90px;
-  background: transparent;
+  background: var(--primary-blue);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 
   & .center {
     width: var(--width-standard);
@@ -16,8 +21,8 @@
     align-items: center;
 
     & img {
-      height: 77px;
-      width: 190px;
+      height: 70px;
+      width: 180px;
       background: white;
       padding: 5px 10px;
       box-sizing: content-box;

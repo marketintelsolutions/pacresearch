@@ -1,77 +1,79 @@
-.section-four {
-  //   border: 2px solid red;
-  min-height: 400px;
-  max-width: var(--width-standard);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  padding: 80px 0;
-  z-index: 3;
+.landing {
+  & .section-four {
+    //   border: 2px solid red;
+    min-height: 400px;
+    max-width: var(--width-standard);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 80px 0;
+    z-index: 3;
 
-  & p {
-    width: 50%;
-    font-size: 1.1rem;
-    font-weight: 400;
-    opacity: 0.75;
-    text-transform: capitalize;
-    line-height: 1.2;
-    color: white;
-  }
-
-  & .content {
-    // border: 2px solid blue;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-
-    & .business-item {
-      border: 1px solid var(--primary-blue-200);
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
+    & p {
+      width: 50%;
+      font-size: 1.1rem;
+      font-weight: 400;
+      opacity: 0.75;
+      text-transform: capitalize;
+      line-height: 1.2;
       color: white;
-      border-radius: 10px;
-      padding: 20px 15px;
-      position: relative;
-      z-index: 3;
+    }
 
-      & span {
-        font-size: 40px;
-        color: var(--primary-blue-200);
-        z-index: 3;
-      }
+    & .content {
+      // border: 2px solid blue;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
 
-      & p {
-        z-index: 3;
-        width: 100%;
+      & .business-item {
+        border: 1px solid var(--primary-blue-200);
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
         color: white;
-      }
+        border-radius: 10px;
+        padding: 20px 15px;
+        position: relative;
+        z-index: 3;
 
-      &:before {
-        content: "";
-        border-radius: inherit;
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        right: 0;
-        transform: scaleX(0);
-        transform-origin: right;
-        background-color: var(--primary-blue-200);
-        transition: transform 0.5s ease 0s;
-        // z-index: 2;
-      }
+        & span {
+          font-size: 40px;
+          color: var(--primary-blue-200);
+          z-index: 3;
+        }
 
-      &:hover {
-        & p,
-        span {
+        & p {
+          z-index: 3;
+          width: 100%;
           color: white;
         }
+
         &:before {
+          content: "";
+          border-radius: inherit;
+          position: absolute;
+          height: 100%;
+          width: 100%;
           top: 0;
-          transform: scaleX(1);
-          transform-origin: left;
+          right: 0;
+          transform: scaleX(0);
+          transform-origin: right;
+          background-color: var(--primary-blue-200);
+          transition: transform 0.5s ease 0s;
+          // z-index: 2;
+        }
+
+        &:hover {
+          & p,
+          span {
+            color: white;
+          }
+          &:before {
+            top: 0;
+            transform: scaleX(1);
+            transform-origin: left;
+          }
         }
       }
     }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import {
   GrFacebookOption,
@@ -11,10 +11,15 @@ import about from "../assets/images/about.svg";
 import Heading from "../components/Heading";
 import ServiceItem from "../components/ServiceItem";
 import { aboutItems, businessHome, services } from "../utils/data";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
-    <>
+    <main className="landing">
       <section className="section-one">
         <div className="left">
           <div className="icons">
@@ -38,7 +43,7 @@ const Landing = () => {
             through on diverse subjects.
           </p>
           <div className="button">
-            <button>learn more</button>
+            <Link to="/about">learn more</Link>
           </div>
         </div>
         <div className="right">
@@ -59,9 +64,10 @@ const Landing = () => {
               </p>
             </div>
             <div className="right">
-              <button>
+              <Link to="/services">
+                {" "}
                 see all services <BsArrowRight />
-              </button>
+              </Link>
             </div>
           </div>
           <div className="bottom">
@@ -91,7 +97,7 @@ const Landing = () => {
                 );
               })}
             </div>
-            <button>Learn more</button>
+            <Link to="/about">Learn more</Link>
           </div>
           <div className="right">
             <div className="image">
@@ -117,7 +123,7 @@ const Landing = () => {
           })}
         </div>
       </section>
-    </>
+    </main>
   );
 };
 
