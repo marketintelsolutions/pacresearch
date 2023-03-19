@@ -9,6 +9,7 @@ import mapPaper from "../assets/images/mapPaper.jpg";
 import { GiStairsGoal } from "react-icons/gi";
 import { IoMdListBox } from "react-icons/io";
 import { Link } from "react-router-dom";
+import PageHeader from "../components/PageHeader";
 
 const About = () => {
   useEffect(() => {
@@ -17,15 +18,7 @@ const About = () => {
 
   return (
     <main className="about">
-      <section
-        className="section-one"
-        style={{ backgroundImage: `url(${pattern})` }}
-      >
-        <h1>About us</h1>
-        <p>
-          <Link to="/">Home</Link> / About us
-        </p>
-      </section>
+      <PageHeader text="About us" />
       <section className="section-two">
         <div className="content">
           <div className="left">

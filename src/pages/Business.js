@@ -1,7 +1,12 @@
 import React from "react";
+import PageHeader from "../components/PageHeader";
 
 const Business = () => {
-  return <div>Business</div>;
+  return (
+    <section className="business">
+      <PageHeader text="business processes" />
+    </section>
+  );
 };
 
 export default Business;

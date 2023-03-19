@@ -1,7 +1,12 @@
 import React from "react";
+import PageHeader from "../components/PageHeader";
 
 const Services = () => {
-  return <div>Services</div>;
+  return (
+    <main className="services">
+      <PageHeader text="services" />
+    </main>
+  );
 };
 
 export default Services;
