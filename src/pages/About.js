@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import Heading from "../components/Heading";
-import { aboutItems } from "../utils/data";
+import { aboutItems, aboutMore, whyPac } from "../utils/data";
 import about from "../assets/images/about.svg";
 import pattern from "../assets/images/pattern.jpg";
 import people from "../assets/images/people.jpg";
 import research from "../assets/images/research.jpg";
+import mapPaper from "../assets/images/mapPaper.jpg";
 import { GiStairsGoal } from "react-icons/gi";
 import { IoMdListBox } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -29,6 +30,7 @@ const About = () => {
         <div className="content">
           <div className="left">
             <Heading text="about us" />
+
             <h1> intellectually curious, imaginative & analytical</h1>
             <p>
               We draw on cleaner and richer data to help our customers gain
@@ -112,6 +114,80 @@ const About = () => {
             </div>
           </div>
         </div>
+      </section>
+      <section className="section-four">
+        <div className="heading">
+          <Heading text="PAC Research LTD/GTE" />
+        </div>
+        <div className="content">
+          <div className="left">
+            <p>
+              PAC Research is powering business across marketplaces through
+              information, insights, and technology that enable customers to
+              execute critical business decisions with confidence. By coalescing
+              an exclusive platform with best-in-class data and analytics, we
+              link businesses and public entities to opportunities - we drive
+              performance, innovation and progress for our customers and
+              partners.
+            </p>
+            <p>
+              PAC Research leverages contemporary technologies and innovative
+              instruments to create industry-leading analysis, insights and
+              investment advice. We deploy analytics, machine learning and other
+              research tools to deliver thorough and impactful services to our
+              clients.
+            </p>
+            <p>
+              Our robust services offering is at the heart of our business. We
+              draw from extensive multi-sector experience and deep capabilities
+              in supporting clients at different stages of their journey with
+              initiatives aimed at facilitating the achievement of clients’
+              goals strategy.
+            </p>
+          </div>
+          <div className="right">
+            <div className="image">
+              {" "}
+              <img src={mapPaper} alt="mapPaper" />
+            </div>
+            <p>
+              We draw on cleaner and richer data to help our customers gain
+              greater insight, fuel innovation and effectively navigate this
+              time of unequalled change.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="section-five">
+        <Heading text="Why PAC Research?" />
+        <p>
+          We deploy analytics, machine learning and other research tools to
+          deliver thorough and impactful services to our clients.
+        </p>
+        <div className="content">
+          {whyPac.map((item, index) => (
+            <div className="item" key={index}>
+              <p>{item}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className="section-six">
+        {aboutMore.map((i, index) => {
+          const { icon, heading, items } = i;
+          return (
+            <div key={index} className="main">
+              <span>{icon}</span>
+              <h2>{heading}</h2>
+              <hr />
+              <div className="items">
+                {items.map((item, index) => (
+                  <p key={index}>{item}</p>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </section>
     </main>
   );

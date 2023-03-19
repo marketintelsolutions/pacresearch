@@ -10,10 +10,13 @@ import {
   RiCoinsFill,
   RiFileSearchFill,
   RiLightbulbFlashFill,
+  RiShieldKeyholeFill,
 } from "react-icons/ri";
 import { BsBank2, BsFillHouseCheckFill, BsLightbulb } from "react-icons/bs";
-import { FaRobot, FaIndustry } from "react-icons/fa";
+import { FaRobot, FaIndustry, FaKeycdn } from "react-icons/fa";
 import { IoIosStats } from "react-icons/io";
+import { BiDumbbell } from "react-icons/bi";
+import { GrResources } from "react-icons/gr";
 import {
   MdAgriculture,
   MdEmojiTransportation,
@@ -158,5 +161,46 @@ export const businessHome = [
   {
     icon: <IoIosStats />,
     text: "Logistics",
+  },
+];
+
+export const whyPac = [
+  "Extensive experience in developing industry reports, specialized reports, macroeconomic reports, market sizing and opportunity assessment. We have developed industry reports and conducted market sizing and assessment for a wide range of clients across several industries including banking, real estate, oil & gas, etc.",
+  "Worked on projects with various private clients, government and regulatory bodies across sectors and have developed deep understanding of the trends, opportunities and challenges in different sectors.",
+  "Team of relevant subject matter experts and project team drawn from a pool of experienced professionals who have deep and specialized experience in various markets.",
+  "Deep understanding of industries across economies and leading through on diverse subjects",
+  "Time-tested tools and methodologies are pivotal in tailor-suiting our services to meet clients’ needs.",
+  "Leverage our partnership with industry-leading data providers, people, tools and methodologies to provide world-class service.",
+];
+
+export const aboutMore = [
+  {
+    icon: <RiShieldKeyholeFill />,
+    heading: "KEY PARTNERS",
+    items: [
+      "Data Companies",
+      "Multilateral Organizations",
+      "Governments",
+      "Private Entities",
+      "Individuals",
+      "Learning Institutions",
+      "PAC Group",
+    ],
+  },
+  {
+    icon: <BiDumbbell />,
+    heading: "OUR VALUE PROPOSITIONS",
+    items: [
+      "Intelligent Analytic Platform",
+      "Real-time data services",
+      "Clean & Credible Data",
+      "Insight Services",
+      "Independent and objective data/information",
+    ],
+  },
+  {
+    icon: <FaKeycdn />,
+    heading: "KEY RESOURCES",
+    items: ["People", "Technology", "Proprietary Software Platforms"],
   },
 ];
