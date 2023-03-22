@@ -165,7 +165,7 @@ export const businessHome = [
 ];
 
 export const whyPac = [
-  "Extensive experience in developing industry reports, specialized reports, macroeconomic reports, market sizing and opportunity assessment. We have developed industry reports and conducted market sizing and assessment for a wide range of clients across several industries including banking, real estate, oil & gas, etc.",
+  "Extensive experience in developing industry reports, specialized reports, macroeconomic reports, market sizing and opportunity assessment. ",
   "Worked on projects with various private clients, government and regulatory bodies across sectors and have developed deep understanding of the trends, opportunities and challenges in different sectors.",
   "Team of relevant subject matter experts and project team drawn from a pool of experienced professionals who have deep and specialized experience in various markets.",
   "Deep understanding of industries across economies and leading through on diverse subjects",

@@ -6,12 +6,13 @@ import {
   GrInstagram,
   GrTwitter,
 } from "react-icons/gr";
-import prototyping from "../assets/images/prototyping.svg";
-import about from "../assets/images/about.svg";
+import researchBooks from "../assets/images/researchBooks.jpg";
+import book from "../assets/images/book.jpg";
 import Heading from "../components/Heading";
 import ServiceItem from "../components/ServiceItem";
 import { aboutItems, businessHome, services } from "../utils/data";
 import { Link } from "react-router-dom";
+import hazelwood from "../assets/images/hazelwood.jpg";
 
 const Landing = () => {
   useEffect(() => {
@@ -20,35 +21,40 @@ const Landing = () => {
 
   return (
     <main className="landing">
-      <section className="section-one">
-        <div className="left">
-          <div className="icons">
-            <span>
-              <GrFacebookOption />
-            </span>{" "}
-            <span>
-              <GrYoutube />
-            </span>{" "}
-            <span>
-              <GrInstagram />
-            </span>{" "}
-            <span>
-              <GrTwitter />
-            </span>
+      <section
+        className="section-one"
+        style={{ backgroundImage: `url(${hazelwood})` }}
+      >
+        <div className="center">
+          <div className="left">
+            <div className="icons">
+              <span>
+                <GrFacebookOption />
+              </span>{" "}
+              <span>
+                <GrYoutube />
+              </span>{" "}
+              <span>
+                <GrInstagram />
+              </span>{" "}
+              <span>
+                <GrTwitter />
+              </span>
+            </div>
+            <Heading text="innovative research" />
+            <h1>deliver thorough and impactful services</h1>
+            <p>
+              Deep understanding of industries across economies and leading
+              through on diverse subjects.
+            </p>
+            <div className="button">
+              <Link to="/about">learn more</Link>
+            </div>
           </div>
-          <Heading text="innovative research" />
-          <h1>deliver thorough and impactful services</h1>
-          <p>
-            Deep understanding of industries across economies and leading
-            through on diverse subjects.
-          </p>
-          <div className="button">
-            <Link to="/about">learn more</Link>
-          </div>
-        </div>
-        <div className="right">
-          <div className="image">
-            <img src={prototyping} alt="prototyping" />
+          <div className="right">
+            <div className="image">
+              <img src={researchBooks} alt="prototyping" />
+            </div>
           </div>
         </div>
       </section>
@@ -101,7 +107,7 @@ const Landing = () => {
           </div>
           <div className="right">
             <div className="image">
-              <img src={about} alt="prototyping" />
+              <img src={book} alt="prototyping" />
             </div>
           </div>
         </div>

@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import Heading from "../components/Heading";
 import { aboutItems, aboutMore, whyPac } from "../utils/data";
-import about from "../assets/images/about.svg";
+import book from "../assets/images/book.jpg";
 import pattern from "../assets/images/pattern.jpg";
 import people from "../assets/images/people.jpg";
 import research from "../assets/images/research.jpg";
-import mapPaper from "../assets/images/mapPaper.jpg";
+import coffee from "../assets/images/coffee.jpg";
 import { GiStairsGoal } from "react-icons/gi";
 import { IoMdListBox } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -44,7 +44,7 @@ const About = () => {
           </div>
           <div className="right">
             <div className="image">
-              <img src={about} alt="prototyping" />
+              <img src={book} alt="prototyping" />
             </div>
           </div>
         </div>
@@ -126,28 +126,14 @@ const About = () => {
             <p>
               PAC Research leverages contemporary technologies and innovative
               instruments to create industry-leading analysis, insights and
-              investment advice. We deploy analytics, machine learning and other
-              research tools to deliver thorough and impactful services to our
-              clients.
-            </p>
-            <p>
-              Our robust services offering is at the heart of our business. We
-              draw from extensive multi-sector experience and deep capabilities
-              in supporting clients at different stages of their journey with
-              initiatives aimed at facilitating the achievement of clients’
-              goals strategy.
+              investment advice.
             </p>
           </div>
           <div className="right">
             <div className="image">
               {" "}
-              <img src={mapPaper} alt="mapPaper" />
+              <img src={coffee} alt="mapPaper" />
             </div>
-            <p>
-              We draw on cleaner and richer data to help our customers gain
-              greater insight, fuel innovation and effectively navigate this
-              time of unequalled change.
-            </p>
           </div>
         </div>
       </section>
