@@ -1,7 +1,7 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 
-const ServiceItem = ({ heading, items, icon }) => {
+const ServiceItem = ({ heading, items, icon, button }) => {
   return (
     <div className="service-item">
       <div className="icon">{icon}</div>
@@ -12,9 +12,11 @@ const ServiceItem = ({ heading, items, icon }) => {
             <li key={index}>{item}</li>
           ))}
         </ul>
-        <button>
-          Read More <BsArrowRight />
-        </button>
+        {button && (
+          <button>
+            Read More <BsArrowRight />
+          </button>
+        )}
       </div>
     </div>
   );

@@ -373,19 +373,33 @@
   }
 
   & .section-six {
-    // border: 2px solid red;
     min-height: 400px;
     display: flex;
     flex-direction: row;
     gap: 30px;
-    max-width: var(--width-standard);
     margin: 0 auto;
     justify-content: center;
     color: white;
-    padding: 40px 0 100px;
+    padding: 70px 0 70px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    // border: 2px solid red;
+    // align-items: center;
+
+    &:before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: rgba(21, 40, 74, 0.65);
+      top: 0;
+      left: 0;
+    }
 
     & .main {
       display: grid;
+      max-width: var(--width-standard);
       //   flex-direction: column;
       grid-template-rows: auto 1fr auto auto;
       grid-auto-rows: auto;
@@ -394,6 +408,8 @@
       padding: 20px;
       width: 300px;
       border-radius: 4px;
+      position: relative;
+      z-index: 3;
 
       & span {
         padding: 15px;
@@ -410,11 +426,17 @@
         border-radius: 50%;
         // background: var(--secondary-grey);
         background: var(--primary-blue-200);
+        z-index: 4;
+        // transform: rotateX('180deg');
+        transform: rotateY(0);
+
+        transition: var(--transition);
       }
 
       & h2 {
         font-size: 22px;
         font-weight: 700;
+        z-index: 4;
       }
 
       & hr {
@@ -422,6 +444,7 @@
         height: 2px;
         background: var(--primary-blue-200);
         border: none;
+        z-index: 4;
       }
 
       & .items {
@@ -430,12 +453,41 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+        z-index: 4;
 
         & p {
           font-size: 16px;
           font-weight: 400;
           letter-spacing: 1px;
           //   line-height: 15px;
+        }
+      }
+
+      &:before {
+        content: "";
+        border-radius: inherit;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        // left: 0;
+        right: 0;
+        transform: scaleX(0);
+        transform-origin: left;
+        background-color: var(--primary-blue);
+        // z-index: -3;
+        transition: transform 0.5s ease 0s;
+      }
+
+      &:hover {
+        & span {
+          // transform: translateZ(10px);
+          transform: rotateY(180deg);
+        }
+        &:before {
+          top: 0;
+          transform: scaleX(1);
+          transform-origin: left;
         }
       }
     }

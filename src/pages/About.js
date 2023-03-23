@@ -4,6 +4,7 @@ import { aboutItems, aboutMore, whyPac } from "../utils/data";
 import book from "../assets/images/book.jpg";
 import pattern from "../assets/images/pattern.jpg";
 import people from "../assets/images/people.jpg";
+import laptops from "../assets/images/laptops.jpg";
 import research from "../assets/images/research.jpg";
 import coffee from "../assets/images/coffee.jpg";
 import { GiStairsGoal } from "react-icons/gi";
@@ -151,7 +152,10 @@ const About = () => {
           ))}
         </div>
       </section>
-      <section className="section-six">
+      <section
+        className="section-six"
+        style={{ backgroundImage: `url(${laptops})` }}
+      >
         {aboutMore.map((i, index) => {
           const { icon, heading, items } = i;
           return (

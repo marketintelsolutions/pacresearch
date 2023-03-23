@@ -78,7 +78,7 @@ const Landing = () => {
           </div>
           <div className="bottom">
             {services.map((service, index) => (
-              <ServiceItem key={index} {...service} />
+              <ServiceItem key={index} {...service} button={true} />
             ))}
           </div>
         </div>

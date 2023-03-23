@@ -16,7 +16,7 @@ import { BsBank2, BsFillHouseCheckFill, BsLightbulb } from "react-icons/bs";
 import { FaRobot, FaIndustry, FaKeycdn } from "react-icons/fa";
 import { IoIosStats } from "react-icons/io";
 import { BiDumbbell } from "react-icons/bi";
-import { GrResources } from "react-icons/gr";
+import { SlPeople } from "react-icons/sl";
 import {
   MdAgriculture,
   MdEmojiTransportation,
@@ -64,7 +64,7 @@ export const services = [
     items: ["Product Development", "market intelligence"],
   },
   {
-    icon: <SiConsul />,
+    icon: <SlPeople />,
     heading: "consulting",
     items: ["private businesses", "public sector", "training"],
   },
