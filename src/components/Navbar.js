@@ -1,12 +1,26 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import logo from "../assets/logo/logo.png";
 import { MdOutlineLightMode } from "react-icons/md";
 import { links } from "../utils/data";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="navbar">
+    <nav className={scrollPosition > 100 ? "navbar-scrolled navbar" : "navbar"}>
       <div className="center">
         <img src={logo} alt="logo" />
         <div className="links">

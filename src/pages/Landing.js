@@ -12,7 +12,8 @@ import Heading from "../components/Heading";
 import ServiceItem from "../components/ServiceItem";
 import { aboutItems, businessHome, services } from "../utils/data";
 import { Link } from "react-router-dom";
-import hazelwood from "../assets/images/hazelwood.jpg";
+import pattern from "../assets/images/pattern.jpg";
+import ParticlesBg from "../components/Particles";
 
 const Landing = () => {
   useEffect(() => {
@@ -23,8 +24,11 @@ const Landing = () => {
     <main className="landing">
       <section
         className="section-one"
-        style={{ backgroundImage: `url(${hazelwood})` }}
+        style={{ backgroundImage: `url(${pattern})` }}
       >
+        <div className="particles">
+          <ParticlesBg />
+        </div>
         <div className="center">
           <div className="left">
             <div className="icons">
@@ -42,7 +46,10 @@ const Landing = () => {
               </span>
             </div>
             <Heading text="innovative research" />
-            <h1>deliver thorough and impactful services</h1>
+            <h1>
+              deliver thorough and impactful <span>services</span>{" "}
+              <div className="rounded-shape"></div>
+            </h1>
             <p>
               Deep understanding of industries across economies and leading
               through on diverse subjects.

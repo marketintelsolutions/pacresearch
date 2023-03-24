@@ -1,7 +1,7 @@
 .navbar {
   // border: 2px solid red;
   min-height: 90px;
-  background: var(--primary-blue);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,4 +58,8 @@
       }
     }
   }
+}
+
+.navbar-scrolled {
+  background: var(--primary-blue);
 }

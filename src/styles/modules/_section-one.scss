@@ -1,19 +1,34 @@
 .landing {
+  // background: var(--primary-blue);
+
   & .section-one {
     //   border: 2px solid red;
 
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+    z-index: -3;
+
+    // backgroun
 
     &:before {
       content: "";
       position: absolute;
       height: 100%;
       width: 100%;
-      background: rgba(21, 40, 74, 0.75);
+      background: rgba(21, 40, 74, 0.7);
       top: 0;
       left: 0;
+      z-index: -2;
+    }
+
+    & .particles {
+      position: absolute;
+      // height: 100%;
+      // width: 100%;
+      // top: 0;
+      // left: 0;
+      z-index: -1;
     }
 
     & .center {
@@ -51,6 +66,33 @@
         font-weight: 700;
         text-transform: capitalize;
         line-height: 1.3;
+        position: relative;
+
+        & span {
+          color: var(--primary-blue-200);
+        }
+
+        & .rounded-shape {
+          background-image: repeating-linear-gradient(
+            -55deg,
+            transparent 0.9px,
+            var(--primary-blue-200) 1.25px,
+            var(--primary-blue-200) 3px,
+            transparent 4px,
+            transparent 8px
+          );
+
+          border-radius: 50%;
+
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          opacity: 0.25;
+          z-index: -1;
+          left: 0;
+          top: -30px;
+          transform: translate(-25%, -25%);
+        }
       }
 
       & p {
@@ -63,14 +105,17 @@
         a {
           font-size: 1.15rem;
           border: 2px solid var(--primary-blue-200);
-          border-top-right-radius: 10px;
-          border-bottom-left-radius: 10px;
+          border-radius: 0.25rem;
+          border-bottom-left-radius: 1rem;
+          border-top-right-radius: 1rem;
           text-transform: capitalize;
           transition: var(--transition);
           padding: 12px 36px;
           color: var(--primary-blue-200);
           background: white;
           text-decoration: none;
+
+          padding: 0.75rem 1.5rem;
 
           &:hover {
             cursor: pointer;
@@ -101,14 +146,17 @@
           top: 0;
           right: 0;
           border: 5px solid var(--primary-blue-200);
-          border-top-right-radius: 10px;
-          border-bottom-left-radius: 10px;
+          border-radius: 0.25rem;
+          border-bottom-left-radius: 1rem;
+          border-top-right-radius: 1rem;
         }
         & img {
           height: 439px;
           width: 476px;
           object-fit: cover;
-          border-radius: 10px;
+          border-radius: 0.25rem;
+          border-bottom-left-radius: 1rem;
+          border-top-right-radius: 1rem;
           // padding: 10px;
         }
       }
