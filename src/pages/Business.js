@@ -4,11 +4,12 @@ import PageHeader from "../components/PageHeader";
 import { businessHome } from "../utils/data";
 import rainbow from "../assets/images/rainbow.png";
 import flexibility from "../assets/images/flexibility.jpg";
-import robustness from "../assets/images/robustness.jpg";
-import high from "../assets/images/high.jpg";
-import logic from "../assets/images/logic.jpg";
+import robustness from "../assets/images/robustness.png";
+import high from "../assets/images/high.png";
+import logic from "../assets/images/logic.png";
 import clear from "../assets/images/clear.jpg";
-import transparentEasy from "../assets/images/transparentEasy.jpg";
+import analytics from "../assets/images/analytics.jpg";
+import transparentEasy from "../assets/images/transparentEasy.png";
 
 const Business = () => {
   useEffect(() => {
@@ -34,7 +35,10 @@ const Business = () => {
           })}
         </div>
       </section>
-      <section className="section-three">
+      <section
+        className="section-three"
+        style={{ backgroundImage: `url(${analytics})` }}
+      >
         <div className="heading">
           <Heading text="Our Predictive Analytics Process" />
         </div>
@@ -43,8 +47,9 @@ const Business = () => {
         </div>
       </section>
       <section className="section-four">
-        <Heading text="Our Work Approach – Modelling Architecture" />
-
+        <div className="heading">
+          <Heading text="Our Work Approach – Modelling Architecture" />
+        </div>
         <div className="item-left">
           <div className="left">
             <h2>Flexibility</h2>

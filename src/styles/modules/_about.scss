@@ -109,7 +109,7 @@
             height: 419px;
             width: 456px;
             border-radius: 10px;
-            object-fit: cover;
+            object-fit: fill;
           }
         }
       }
@@ -474,15 +474,29 @@
         right: 0;
         transform: scaleX(0);
         transform-origin: left;
-        background-color: var(--primary-blue);
+        background-color: rgba(255, 255, 255, 0.95);
         // z-index: -3;
         transition: transform 0.5s ease 0s;
       }
 
       &:hover {
+        & h2 {
+          color: var(--primary-blue);
+        }
         & span {
           // transform: translateZ(10px);
+          background: var(--primary-blue);
           transform: rotateY(180deg);
+        }
+
+        & hr {
+          background: var(--primary-blue);
+        }
+
+        & .items {
+          & p {
+            color: var(--primary-blue);
+          }
         }
         &:before {
           top: 0;

@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import Heading from "../components/Heading";
 import { aboutItems, aboutMore, whyPac } from "../utils/data";
-import book from "../assets/images/book.jpg";
+import aboutText from "../assets/images/aboutText.jpg";
 import pattern from "../assets/images/pattern.jpg";
-import people from "../assets/images/people.jpg";
+import office from "../assets/images/office.jpg";
 import laptops from "../assets/images/laptops.jpg";
 import research from "../assets/images/research.jpg";
 import coffee from "../assets/images/coffee.jpg";
@@ -45,7 +45,7 @@ const About = () => {
           </div>
           <div className="right">
             <div className="image">
-              <img src={book} alt="prototyping" />
+              <img src={aboutText} alt="prototyping" />
             </div>
           </div>
         </div>
@@ -53,8 +53,8 @@ const About = () => {
       <section className="section-three">
         <div className="content">
           <div className="left">
-            <img src={people} alt="people" className="people" />
-            <img src={research} alt="research" className="research" />
+            <img src={office} alt="people" className="people" />
+            <img src={aboutText} alt="research" className="research" />
           </div>
           <div className="right">
             <h3>WHO WE ARE</h3>

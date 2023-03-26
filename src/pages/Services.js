@@ -36,9 +36,24 @@ const Services = () => {
             </div>
           </div>
           <div className="bottom">
-            {services.map((service, index) => (
-              <ServiceItem key={index} {...service} button={false} />
-            ))}
+            {services.map((service, index) => {
+              let arrange;
+              let check = (index + 1) % 2;
+              if (check === 0) {
+                arrange = true;
+              } else {
+                arrange = false;
+              }
+              console.log(arrange);
+              return (
+                <ServiceItem
+                  key={index}
+                  {...service}
+                  button={false}
+                  arrange={arrange}
+                />
+              );
+            })}
           </div>
         </div>
       </section>

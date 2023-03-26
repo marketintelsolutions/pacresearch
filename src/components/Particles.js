@@ -69,6 +69,11 @@ const ParticlesBg = () => {
           },
           size: {
             value: { min: 1, max: 3 },
+            animation: {
+              enable: false,
+              speed: 40,
+              sync: true,
+            },
           },
         },
       }}

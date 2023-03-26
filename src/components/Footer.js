@@ -73,8 +73,7 @@ const Footer = () => {
             <BsInstagram />
             <BsTwitter />
           </div>
-          <p>info@email.com</p>
-          <p>enquiries@email.com</p>
+          <p>info@pacresearch.org</p>
           <p>+234 (1) 2716892</p>
           <p>+234 (1) 2718630</p>
         </div>

@@ -7,7 +7,7 @@ import {
   GrTwitter,
 } from "react-icons/gr";
 import researchBooks from "../assets/images/researchBooks.jpg";
-import book from "../assets/images/book.jpg";
+import aboutText from "../assets/images/aboutText.jpg";
 import Heading from "../components/Heading";
 import ServiceItem from "../components/ServiceItem";
 import { aboutItems, businessHome, services } from "../utils/data";
@@ -114,7 +114,7 @@ const Landing = () => {
           </div>
           <div className="right">
             <div className="image">
-              <img src={book} alt="prototyping" />
+              <img src={aboutText} alt="prototyping" />
             </div>
           </div>
         </div>
