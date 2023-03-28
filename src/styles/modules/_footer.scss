@@ -9,6 +9,7 @@ footer {
   background-size: cover;
   padding: 100px 0;
   position: relative;
+  z-index: 4;
 
   &:before {
     content: "";

@@ -28,12 +28,7 @@ const Services = () => {
                 people, tools and methodologies to provide world-class service.
               </p>
             </div>
-            <div className="right">
-              <Link to="/services">
-                {" "}
-                see all services <BsArrowRight />
-              </Link>
-            </div>
+            <div className="right"></div>
           </div>
           <div className="bottom">
             {services.map((service, index) => {

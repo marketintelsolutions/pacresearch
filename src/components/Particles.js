@@ -26,15 +26,15 @@ const ParticlesBg = () => {
         //   color: "#000",
         // },
         interactivity: {
-          events: {
-            onClick: { enable: true, mode: "push" },
-            onHover: {
-              enable: true,
-              mode: "repulse",
-              parallax: { enable: false, force: 60, smooth: 10 },
-            },
-            resize: true,
-          },
+          // events: {
+          //   onClick: { enable: true, mode: "push" },
+          //   onHover: {
+          //     enable: true,
+          //     mode: "repulse",
+          //     parallax: { enable: false, force: 60, smooth: 10 },
+          //   },
+          //   resize: true,
+          // },
           modes: {
             push: { quantity: 4 },
             repulse: { distance: 200, duration: 0.4 },
