@@ -19,20 +19,22 @@ const Business = () => {
     <section className="business">
       <PageHeader text="business processes" />
       <section className="section-two">
-        <Heading text="business processes" />
-        <p>
-          Deep understanding of industries across economies and leading through
-          on diverse subjects.
-        </p>
-        <div className="content">
-          {businessHome.map((item) => {
-            const { icon, text } = item;
-            return (
-              <div className="business-item">
-                <span>{icon}</span> <p>{text}</p>
-              </div>
-            );
-          })}
+        <div className="content-center">
+          <Heading text="business processes" />
+          <p>
+            Deep understanding of industries across economies and leading
+            through on diverse subjects.
+          </p>
+          <div className="content">
+            {businessHome.map((item) => {
+              const { icon, text } = item;
+              return (
+                <div className="business-item">
+                  <span>{icon}</span> <p>{text}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
       <section

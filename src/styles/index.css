@@ -16,6 +16,7 @@ body {
   --primary-blue: #15284a; /*rgb(21, 40, 74)*/
   --primary-blue-100: #09aff4;
   --primary-blue-200: #5b9bd5;
+  --primary-blue-300: #2a6fc9; /*rgb(42, 111, 201)*/
   --secondary-grey: #a4a4a4;
   --transition: all 0.2s linear;
   --transition-ease: all 0.3s ease-in-out;

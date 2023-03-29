@@ -122,10 +122,18 @@ const Landing = () => {
       <section className="section-four">
         <div className="content-center">
           <Heading text="business processes" />
-          <p>
-            Deep understanding of industries across economies and leading
-            through on diverse subjects.
-          </p>
+          <div className="top">
+            <p>
+              Deep understanding of industries across economies and leading
+              through on diverse subjects.
+            </p>
+            <div className="right">
+              <Link to="/business-processes">
+                {" "}
+                Learn More <BsArrowRight />
+              </Link>
+            </div>
+          </div>
           <div className="content">
             {businessHome.map((item) => {
               const { icon, text } = item;

@@ -139,17 +139,19 @@ const About = () => {
         </div>
       </section>
       <section className="section-five">
-        <Heading text="Why PAC Research?" />
-        <p>
-          We deploy analytics, machine learning and other research tools to
-          deliver thorough and impactful services to our clients.
-        </p>
-        <div className="content">
-          {whyPac.map((item, index) => (
-            <div className="item" key={index}>
-              <p>{item}</p>
-            </div>
-          ))}
+        <div className='content-center'>
+          <Heading text="Why PAC Research?" />
+          <p>
+            We deploy analytics, machine learning and other research tools to
+            deliver thorough and impactful services to our clients.
+          </p>
+          <div className="content">
+            {whyPac.map((item, index) => (
+              <div className="item" key={index}>
+                <p>{item}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
       <section

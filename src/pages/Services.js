@@ -46,6 +46,7 @@ const Services = () => {
                   {...service}
                   button={false}
                   arrange={arrange}
+                  showText={true}
                 />
               );
             })}
