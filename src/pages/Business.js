@@ -4,12 +4,12 @@ import PageHeader from "../components/PageHeader";
 import { businessHome } from "../utils/data";
 import rainbow from "../assets/images/rainbow.png";
 import flexibility from "../assets/images/flexibility.jpg";
-import robustness from "../assets/images/robustness.png";
-import high from "../assets/images/high.png";
-import logic from "../assets/images/logic.png";
+import robustness from "../assets/images/robustness.jpeg";
+import high from "../assets/images/high.jpg";
+import logic from "../assets/images/logic.jpg";
 import clear from "../assets/images/clear.jpg";
 import analytics from "../assets/images/analytics.jpg";
-import transparentEasy from "../assets/images/transparentEasy.png";
+import transparentEasy from "../assets/images/transparentEasy.jpg";
 
 const Business = () => {
   useEffect(() => {
