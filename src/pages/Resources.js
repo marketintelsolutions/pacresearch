@@ -32,9 +32,9 @@ const Resources = () => {
           </div>
           <div className="right">
             <div className="items">
-              {/* <FetchResources /> */}
+              <FetchResources />
 
-              {headings.map((item) => {
+              {/* {headings.map((item) => {
                 const { text, icon, id } = item;
                 return (
                   <Link to={`/resources/${id}`} key={id} className="item">
@@ -45,7 +45,7 @@ const Resources = () => {
                     </div>
                   </Link>
                 );
-              })}
+              })} */}
             </div>
           </div>
         </div>

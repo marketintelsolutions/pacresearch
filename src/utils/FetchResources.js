@@ -11,12 +11,14 @@ import { TbSeo } from "react-icons/tb";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { SiOnlyoffice, SiSpringsecurity } from "react-icons/si";
 import { BsDatabaseFillCheck } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const FetchResources = () => {
-  const [files, setFiles] = useState([]);
-
   const [folders, setFolders] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const iconOptions = [
     AiOutlineAppstoreAdd,
@@ -27,104 +29,90 @@ const FetchResources = () => {
     BsDatabaseFillCheck,
   ];
 
+  // #####################
+  // GET FOLDERS
   useEffect(() => {
-    const storage = getStorage();
-    const sectoralRef = ref(storage, "sectoral-report");
+    const fetchFolders = async () => {
+      setIsLoading(true);
 
-    console.log(sectoralRef);
+      const storage = getStorage();
+      const rootRef = ref(storage, "/");
 
-    // List all the files in the "sectoral" folder
-    listAll(sectoralRef)
-      .then((res) => {
-        // Get metadata and download URLs for each file
-        Promise.all(
-          res.items.map((itemRef) =>
-            Promise.all([getMetadata(itemRef), getDownloadURL(itemRef)])
-          )
-        )
-          .then((fileData) => {
-            const files = fileData.map(([metadata, downloadURL]) => ({
+      const getFolders = async (folderRef) => {
+        const folders = await listAll(folderRef);
+        return Promise.all(
+          folders.prefixes.map(async (folder) => {
+            const files = await getFiles(folder);
+
+            const Icon =
+              iconOptions[Math.floor(Math.random() * iconOptions.length)];
+            return {
+              id: uuidv4(), // Generate random id for each folder
+              heading: folder.name,
+              files,
+              icon: <Icon />,
+            };
+          })
+        );
+      };
+
+      const getFiles = async (folderRef) => {
+        const files = await listAll(folderRef);
+        return Promise.all(
+          files.items.map(async (fileRef) => {
+            const [metadata, downloadURL] = await Promise.all([
+              getMetadata(fileRef),
+              getDownloadURL(fileRef),
+            ]);
+            return {
               name: metadata.name,
               size: metadata.size,
               type: metadata.contentType,
               downloadURL,
-            }));
-            setFiles(files);
+            };
           })
-          .catch((error) => {
-            console.error("Error getting metadata and download URLs:", error);
-          });
-      })
-      .catch((error) => {
-        console.error("Error listing files:", error);
-      });
-  }, []);
-  //   console.log(files, "files");
+        );
+      };
 
-  // #####################
-
-  useEffect(() => {
-    const storage = getStorage();
-    const rootRef = ref(storage, "/");
-
-    const getFolders = async (folderRef) => {
-      const folders = await listAll(folderRef);
-      return Promise.all(
-        folders.prefixes.map(async (folder) => {
-          const files = await getFiles(folder);
-
-          const Icon =
-            iconOptions[Math.floor(Math.random() * iconOptions.length)];
-          return {
-            heading: folder.name,
-            files,
-            icon: <Icon />,
-          };
+      getFolders(rootRef)
+        .then((folders) => {
+          setFolders(folders);
+          setIsLoading(false);
         })
-      );
+        .catch((error) => {
+          console.error("Error getting folders:", error);
+        });
     };
 
-    const getFiles = async (folderRef) => {
-      const files = await listAll(folderRef);
-      return Promise.all(
-        files.items.map(async (fileRef) => {
-          const [metadata, downloadURL] = await Promise.all([
-            getMetadata(fileRef),
-            getDownloadURL(fileRef),
-          ]);
-          return {
-            name: metadata.name,
-            size: metadata.size,
-            type: metadata.contentType,
-            downloadURL,
-          };
-        })
-      );
-    };
-
-    getFolders(rootRef)
-      .then((folders) => {
-        setFolders(folders);
-      })
-      .catch((error) => {
-        console.error("Error getting folders:", error);
-      });
+    fetchFolders();
   }, []);
 
-  console.log(folders);
+  //   console.log(folders, "folders");
+
+  if (isLoading) {
+    return <h2>Loading...</h2>;
+  }
 
   return (
     <div className="items">
-      {folders.map((item) => {
-        const { heading, icon, id } = item;
+      {folders.map((folder) => {
+        const { heading, icon, id, files } = folder;
         return (
-          <Link to={`/resources/${id}`} key={id} className="item">
+          <div
+            onClick={() =>
+              navigate(`/resources/${heading}`, {
+                state: { heading, files, id },
+              })
+            }
+            key={id}
+            className="item"
+          >
             <span>{icon}</span>
             <div className="text">
               <h2>{heading}</h2>
-              <p>44 items</p>
+              <p>{files.length} items</p>
             </div>
-          </Link>
+          </div>
         );
       })}
     </div>

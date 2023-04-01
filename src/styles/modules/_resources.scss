@@ -9,13 +9,14 @@
       width: var(--width-standard);
       // border: 2px solid red;
       min-height: 400px;
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      // flex-direction: row;
+      grid-template-columns: auto 1fr;
       gap: 40px;
 
       & .left {
         // border: 2px solid red;
-        width: 450px;
+        width: 400px;
 
         & .all {
           // border: 2px solid blue;
@@ -70,7 +71,9 @@
       }
 
       & .right {
-        // border: 2px solid red;
+        // border: 2px solid blue;
+        // width: 500px;
+        // width: 100%;
 
         & .items {
           display: grid;
@@ -93,6 +96,7 @@
             background: white;
             color: var(--primary-blue);
             position: relative;
+            width: 335px;
 
             & span {
               font-size: 45px;
@@ -120,7 +124,7 @@
                 z-index: 3;
                 // border: 2px solid red;
                 text-align: right;
-                // height: 60px;
+                height: 60px;
               }
 
               & p {
@@ -168,7 +172,7 @@
 
 .resource-details {
   & .section-two {
-    background: rgb(238, 240, 242);
+    background: rgb(239, 241, 242);
     // border: 2px solid red;
     padding: 100px 0;
 
@@ -272,6 +276,7 @@
               gap: 30px;
               position: relative;
               cursor: pointer;
+              width: 250px;
 
               & span {
                 position: absolute;
@@ -291,8 +296,11 @@
               }
 
               & h2 {
-                font-size: 17px;
+                font-size: 15px;
                 text-transform: capitalize;
+                // border: 2px solid red;
+                word-wrap: break-word;
+                height: 60px;
               }
 
               & p {
