@@ -7,7 +7,7 @@ import { BsDatabaseFillCheck } from "react-icons/bs";
 export const headings = [
   {
     id: 1,
-    text: "Business marketing",
+    text: "sectoral record",
     icon: <AiOutlineAppstoreAdd />,
     items: [
       {
@@ -46,7 +46,7 @@ export const headings = [
   },
   {
     id: 2,
-    text: "expand SEO",
+    text: "equity report",
     icon: <TbSeo />,
     items: [
       {
@@ -85,7 +85,7 @@ export const headings = [
   },
   {
     id: 3,
-    text: "office management",
+    text: "economic report",
     icon: <HiOutlineOfficeBuilding />,
     items: [
       {
@@ -124,7 +124,7 @@ export const headings = [
   },
   {
     id: 4,
-    text: "client managing",
+    text: "daily financial market record",
     icon: <SiOnlyoffice />,
     items: [
       {
@@ -163,7 +163,7 @@ export const headings = [
   },
   {
     id: 5,
-    text: "data collection",
+    text: "daily price list",
     icon: <BsDatabaseFillCheck />,
     items: [
       {
@@ -202,7 +202,7 @@ export const headings = [
   },
   {
     id: 6,
-    text: "secured system",
+    text: "AfCTA",
     icon: <SiSpringsecurity />,
     items: [
       {

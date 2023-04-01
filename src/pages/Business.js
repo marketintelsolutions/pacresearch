@@ -9,7 +9,7 @@ import high from "../assets/images/high.jpg";
 import logic from "../assets/images/logic.jpg";
 import clear from "../assets/images/clear.jpg";
 import analytics from "../assets/images/analytics.jpg";
-import transparentEasy from "../assets/images/transparentEasy.jpg";
+import transparentEasy from "../assets/images/transparentEasy.jpeg";
 
 const Business = () => {
   useEffect(() => {

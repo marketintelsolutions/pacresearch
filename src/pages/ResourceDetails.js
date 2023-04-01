@@ -41,8 +41,8 @@ const ResourceDetails = (props) => {
       >
         <h1>{item.text}</h1>
         <p>
-          <Link to="/">Home</Link> / <Link to="/resources">Resources</Link> /
-          {item.text}
+          <Link to="/">Home</Link> / <Link to="/resources"> Resources</Link> /
+          <span> {item.text}</span>
         </p>
       </section>
       <div className="section-two" id="resources">
