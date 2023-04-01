@@ -118,7 +118,7 @@ const ResourceDetails = (props) => {
             </div>
             <div className="left">
               <div className="top">
-                <p>all</p> <span>50</span>
+                <p>all</p> <span>{files.length}</span>
               </div>
               <div className="bottom">
                 {!isLoading ? (
