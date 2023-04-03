@@ -57,15 +57,23 @@
             }
           }
           & button {
-            padding: 0 30px;
             font-size: 20px;
             text-transform: uppercase;
             background: white;
-            color: var(--primary-blue);
             border-radius: 30px;
             height: 60px;
             cursor: pointer;
             border: none;
+
+            & a {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 0 30px;
+              height: 60px;
+              text-decoration: none;
+              color: var(--primary-blue);
+            }
           }
         }
       }
@@ -154,9 +162,6 @@
               // border: 2px solid red;
               // color: var(--primary-blue);
 
-              & span {
-                // color: var(--primary-blue);
-              }
               &:before {
                 top: 0;
                 // transform: scaleX(1);
@@ -228,6 +233,7 @@
 
         & .left {
           // border: 2px solid brown;
+          height: 720px;
           width: 100%;
           padding: 20px 40px;
           background: rgb(242, 243, 247);
@@ -235,6 +241,7 @@
           display: flex;
           flex-direction: column;
           gap: 40px;
+          overflow-y: scroll;
 
           & .top {
             // border: 2px solid red;
@@ -262,10 +269,12 @@
 
           & .bottom {
             // border: 2px solid red;
+            // height: 500px;
             // height: 100%;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            gap: 30px;
+            width: 100%;
 
             & .item {
               padding: 70px 20px 50px;

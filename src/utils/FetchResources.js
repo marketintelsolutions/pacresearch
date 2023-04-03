@@ -13,6 +13,7 @@ import { SiOnlyoffice, SiSpringsecurity } from "react-icons/si";
 import { BsDatabaseFillCheck } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { headings } from "./resourcesData";
 
 const FetchResources = () => {
   const [folders, setFolders] = useState([]);
@@ -44,13 +45,24 @@ const FetchResources = () => {
           folders.prefixes.map(async (folder) => {
             const files = await getFiles(folder);
 
+            if (folder.name === "all") {
+              return;
+            }
+
+            const matchingHeading = headings.find(
+              (item) => item.text === folder.name
+            );
+            const { icon, color } = matchingHeading;
+            console.log(matchingHeading);
             const Icon =
               iconOptions[Math.floor(Math.random() * iconOptions.length)];
             return {
               id: uuidv4(), // Generate random id for each folder
               heading: folder.name,
               files,
-              icon: <Icon />,
+              // icon: <Icon />,
+              icon,
+              color,
             };
           })
         );
@@ -96,7 +108,8 @@ const FetchResources = () => {
   return (
     <div className="items">
       {folders.map((folder) => {
-        const { heading, icon, id, files } = folder;
+        if (!folder) return;
+        const { heading, icon, id, files, color } = folder;
         return (
           <div
             onClick={() =>
@@ -107,7 +120,7 @@ const FetchResources = () => {
             key={id}
             className="item"
           >
-            <span>{icon}</span>
+            <span style={{ background: `${color}` }}>{icon}</span>
             <div className="text">
               <h2>{heading}</h2>
               <p>{files.length} items</p>

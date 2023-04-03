@@ -136,7 +136,7 @@
     .item-right {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 45px;
       max-width: var(--width-standard);
       margin: 0 auto;
 
@@ -165,9 +165,12 @@
 
       & .right {
         & img {
-          height: 450px;
-          width: 600px;
-          border-radius: 50%;
+          height: 400px;
+          width: 550px;
+          // border-radius: 50%;
+          border-radius: 0.25rem;
+          border-bottom-left-radius: 1rem;
+          border-top-right-radius: 1rem;
           object-fit: cover;
         }
       }

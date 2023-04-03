@@ -306,6 +306,9 @@
           & img {
             height: 370px;
             width: 552px;
+            border-radius: 0.25rem;
+            border-bottom-left-radius: 1rem;
+            border-top-right-radius: 1rem;
             object-fit: cover;
           }
 
@@ -318,6 +321,9 @@
             top: 0;
             left: 0;
             z-index: 3;
+            border-radius: 0.25rem;
+            border-bottom-left-radius: 1rem;
+            border-top-right-radius: 1rem;
           }
         }
 

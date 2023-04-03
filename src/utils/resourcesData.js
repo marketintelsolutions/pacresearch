@@ -3,12 +3,14 @@ import { TbSeo } from "react-icons/tb";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { SiOnlyoffice, SiSpringsecurity } from "react-icons/si";
 import { BsDatabaseFillCheck } from "react-icons/bs";
+import { VscRunAll } from "react-icons/vsc";
 
 export const headings = [
   {
     id: 1,
     text: "sectoral record",
     icon: <AiOutlineAppstoreAdd />,
+    color: "#15284a",
     items: [
       {
         head: "app development",
@@ -48,6 +50,7 @@ export const headings = [
     id: 2,
     text: "equity report",
     icon: <TbSeo />,
+    color: "#09aff4",
     items: [
       {
         head: "Expand development",
@@ -87,6 +90,9 @@ export const headings = [
     id: 3,
     text: "economic report",
     icon: <HiOutlineOfficeBuilding />,
+    // color: "#15284a",
+    color: "#09aff4",
+
     items: [
       {
         head: "office development",
@@ -126,6 +132,7 @@ export const headings = [
     id: 4,
     text: "daily financial market record",
     icon: <SiOnlyoffice />,
+    color: "#a4a4a4",
     items: [
       {
         head: "client development",
@@ -165,6 +172,7 @@ export const headings = [
     id: 5,
     text: "daily price list",
     icon: <BsDatabaseFillCheck />,
+    color: "#15284a",
     items: [
       {
         head: "data development",
@@ -204,6 +212,7 @@ export const headings = [
     id: 6,
     text: "AfCTA",
     icon: <SiSpringsecurity />,
+    color: "#09aff4",
     items: [
       {
         head: "secured development",
@@ -239,4 +248,16 @@ export const headings = [
       },
     ],
   },
+  {
+    id: 6,
+    text: "all",
+    icon: <VscRunAll />,
+  },
 ];
+
+// export const icons = [
+//   {
+//     text:'',
+//     icon:,
+//   }
+// ]
