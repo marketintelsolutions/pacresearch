@@ -18,38 +18,42 @@ const Resources = () => {
   const [files, setFiles] = useState([]);
 
   // get all files
-  useEffect(() => {
-    const fetchFiles = () => {
-      const storage = getStorage();
-      const sectoralRef = ref(storage, `all`);
+  // useEffect(() => {
+  //   const fetchFiles = () => {
+  //     const storage = getStorage();
+  //     const sectoralRef = ref(storage, `all`);
 
-      // List all the files in the "sectoral" folder
-      listAll(sectoralRef)
-        .then((res) => {
-          // Get metadata and download URLs for each file
-          Promise.all(
-            res.items.map((itemRef) =>
-              Promise.all([getMetadata(itemRef), getDownloadURL(itemRef)])
-            )
-          )
-            .then((fileData) => {
-              const files = fileData.map(([metadata, downloadURL]) => ({
-                name: metadata.name,
-                size: metadata.size,
-                type: metadata.contentType,
-                downloadURL,
-              }));
-              setFiles(files);
-            })
-            .catch((error) => {
-              console.error("Error getting metadata and download URLs:", error);
-            });
-        })
-        .catch((error) => {
-          console.error("Error listing files:", error);
-        });
-    };
-    fetchFiles();
+  //     // List all the files in the "sectoral" folder
+  //     listAll(sectoralRef)
+  //       .then((res) => {
+  //         // Get metadata and download URLs for each file
+  //         Promise.all(
+  //           res.items.map((itemRef) =>
+  //             Promise.all([getMetadata(itemRef), getDownloadURL(itemRef)])
+  //           )
+  //         )
+  //           .then((fileData) => {
+  //             const files = fileData.map(([metadata, downloadURL]) => ({
+  //               name: metadata.name,
+  //               size: metadata.size,
+  //               type: metadata.contentType,
+  //               downloadURL,
+  //             }));
+  //             setFiles(files);
+  //           })
+  //           .catch((error) => {
+  //             console.error("Error getting metadata and download URLs:", error);
+  //           });
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error listing files:", error);
+  //       });
+  //   };
+  //   fetchFiles();
+  // }, []);
+
+  useEffect(() => {
+    window.scroll(0, 0);
   }, []);
 
   return (
@@ -75,20 +79,20 @@ const Resources = () => {
           </div>
           <div className="right">
             <div className="items">
-              <FetchResources />
+              {/* <FetchResources /> */}
 
-              {/* {headings.map((item) => {
+              {headings.map((item) => {
                 const { text, icon, id } = item;
                 return (
-                  <Link to={`/resources/${id}`} key={id} className="item">
+                  <Link to={`/resources/${text}`} key={id} className="item">
                     <span>{icon}</span>
                     <div className="text">
                       <h2>{text}</h2>
-                      <p>44 items</p>
+                      {/* <p>44 items</p> */}
                     </div>
                   </Link>
                 );
-              })} */}
+              })}
             </div>
           </div>
         </div>

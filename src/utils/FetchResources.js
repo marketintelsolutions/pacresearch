@@ -44,6 +44,8 @@ const FetchResources = () => {
         return Promise.all(
           folders.prefixes.map(async (folder) => {
             const files = await getFiles(folder);
+            // const filesSnapshot = await folderRef.listAll();
+            // const fileCount = filesSnapshot.items.length;
 
             if (folder.name === "all") {
               return;
@@ -61,6 +63,7 @@ const FetchResources = () => {
               heading: folder.name,
               files,
               // icon: <Icon />,
+              // fileCount,
               icon,
               color,
             };
@@ -109,12 +112,13 @@ const FetchResources = () => {
     <div className="items">
       {folders.map((folder) => {
         if (!folder) return;
-        const { heading, icon, id, files, color } = folder;
+        const { heading, icon, id, color, files } = folder;
         return (
           <div
             onClick={() =>
               navigate(`/resources/${heading}`, {
                 state: { heading, files, id },
+                // state: { heading, id },
               })
             }
             key={id}
@@ -124,6 +128,7 @@ const FetchResources = () => {
             <div className="text">
               <h2>{heading}</h2>
               <p>{files.length} items</p>
+              {/* <p>{fileCount} items</p> */}
             </div>
           </div>
         );

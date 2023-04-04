@@ -7,19 +7,15 @@
     & .content-head-center {
       margin: 0 auto;
       width: var(--width-standard);
-      // border: 2px solid red;
       min-height: 400px;
       display: grid;
-      // flex-direction: row;
       grid-template-columns: auto 1fr;
       gap: 40px;
 
       & .left {
-        // border: 2px solid red;
         width: 400px;
 
         & .all {
-          // border: 2px solid blue;
           display: flex;
           flex-direction: column;
           gap: 50px;
@@ -286,6 +282,8 @@
               position: relative;
               cursor: pointer;
               width: 250px;
+              text-decoration: none;
+              color: var(--primary-blue);
 
               & span {
                 position: absolute;

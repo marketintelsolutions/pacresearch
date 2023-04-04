@@ -136,7 +136,7 @@
     .item-right {
       display: flex;
       align-items: center;
-      gap: 45px;
+      gap: 75px;
       max-width: var(--width-standard);
       margin: 0 auto;
 
@@ -165,8 +165,8 @@
 
       & .right {
         & img {
-          height: 400px;
-          width: 550px;
+          height: 390px;
+          width: 540px;
           // border-radius: 50%;
           border-radius: 0.25rem;
           border-bottom-left-radius: 1rem;

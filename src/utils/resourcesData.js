@@ -50,7 +50,8 @@ export const headings = [
     id: 2,
     text: "equity report",
     icon: <TbSeo />,
-    color: "#09aff4",
+    color: "#a4a4a4",
+
     items: [
       {
         head: "Expand development",

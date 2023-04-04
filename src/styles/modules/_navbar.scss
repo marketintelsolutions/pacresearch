@@ -62,5 +62,21 @@
 
 .navbar-scrolled {
   // background: var(--primary-blue-200);
-  background: rgb(42, 111, 201);
+  // background: rgb(42, 111, 201);
+  background: white;
+  box-shadow: 1px 1px 14px 1px rgb(228, 224, 224);
+
+  & .center {
+    & .links {
+      & .item {
+        color: var(--primary-blue);
+      }
+    }
+
+    & span {
+      & svg {
+        color: var(--primary-blue);
+      }
+    }
+  }
 }

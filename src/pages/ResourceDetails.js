@@ -3,7 +3,10 @@ import pattern from "../assets/images/pattern.jpg";
 import { useParams } from "react-router-dom";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { headings } from "../utils/resourcesData";
-import { BsFileEarmarkPdfFill } from "react-icons/bs";
+import {
+  BsFileEarmarkPdfFill,
+  BsFillFileEarmarkExcelFill,
+} from "react-icons/bs";
 import { RiPagesLine } from "react-icons/ri";
 import {
   getStorage,
@@ -123,17 +126,33 @@ const ResourceDetails = (props) => {
               <div className="bottom">
                 {!isLoading ? (
                   files.map((file, index) => {
-                    const { name, size } = file;
+                    const { name, size, downloadURL } = file;
+                    console.log(file);
+                    let fileType;
+                    if (name.endsWith(".pdf")) {
+                      // console.log("I love you");
+                      fileType = "pdf";
+                    }
                     return (
-                      <div key={index} className="item">
+                      <a
+                        key={index}
+                        className="item"
+                        href={downloadURL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <span>
-                          <BsFileEarmarkPdfFill />
+                          {fileType === "pdf" ? (
+                            <BsFileEarmarkPdfFill />
+                          ) : (
+                            <BsFillFileEarmarkExcelFill />
+                          )}
                         </span>
                         <h2>{name}</h2>
                         <p>
                           <RiPagesLine /> {size}
                         </p>
-                      </div>
+                      </a>
                     );
                   })
                 ) : (

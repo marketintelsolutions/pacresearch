@@ -48,16 +48,16 @@ export const links = [
 ];
 
 export const services = [
-  {
-    icon: <DiGoogleAnalytics />,
-    heading: "Analytics",
-    items: [
-      "data management",
-      "data services",
-      "content management",
-      "online survey management",
-    ],
-  },
+  // {
+  //   icon: <DiGoogleAnalytics />,
+  //   heading: "Analytics",
+  //   items: [
+  //     "data management",
+  //     "data services",
+  //     "content management",
+  //     "online survey management",
+  //   ],
+  // },
   {
     icon: <VscLightbulbAutofix />,
     heading: "Business Intelligence",
@@ -70,15 +70,15 @@ export const services = [
     items: ["private businesses", "public sector", "training"],
     text: "At PAC Research, we understand that businesses face a wide range of challenges in today's rapidly evolving business landscape. Our Consultancy Services are designed to help businesses navigate these challenges and develop effective strategies that drive growth and success. Our team of experienced consultants brings a wealth of knowledge and expertise to the table, having worked with businesses across various industries and geographies. We work closely with our clients to understand their unique challenges and goals and develop customized solutions that meet their specific needs. Whether you are looking to enter a new market, optimize your operations, or navigate complex regulatory environments, we have the expertise and experience to help you achieve your goals. At PAC Research, we understand that every business is unique, and we work closely with our clients to develop solutions that are tailored to their specific needs and circumstances.",
   },
-  {
-    icon: <GiArchiveResearch />,
-    heading: "macro research",
-    items: [
-      "economic research",
-      "commodities research",
-      "FX/Emerging Markets Research",
-    ],
-  },
+  // {
+  //   icon: <GiArchiveResearch />,
+  //   heading: "macro research",
+  //   items: [
+  //     "economic research",
+  //     "commodities research",
+  //     "FX/Emerging Markets Research",
+  //   ],
+  // },
   {
     icon: <RiFileSearchFill />,
     heading: "investment research",
