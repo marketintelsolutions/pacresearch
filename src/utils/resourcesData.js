@@ -92,7 +92,7 @@ export const headings = [
     text: "economic report",
     icon: <HiOutlineOfficeBuilding />,
     // color: "#15284a",
-    color: "#09aff4",
+    color: "#a4a4a4",
 
     items: [
       {
@@ -133,7 +133,7 @@ export const headings = [
     id: 4,
     text: "daily financial market record",
     icon: <SiOnlyoffice />,
-    color: "#a4a4a4",
+    color: "#09aff4",
     items: [
       {
         head: "client development",
@@ -173,7 +173,7 @@ export const headings = [
     id: 5,
     text: "daily price list",
     icon: <BsDatabaseFillCheck />,
-    color: "#15284a",
+    color: "#09aff4",
     items: [
       {
         head: "data development",
@@ -213,7 +213,7 @@ export const headings = [
     id: 6,
     text: "AfCTA",
     icon: <SiSpringsecurity />,
-    color: "#09aff4",
+    color: "#15284a",
     items: [
       {
         head: "secured development",

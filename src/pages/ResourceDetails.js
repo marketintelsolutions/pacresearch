@@ -14,6 +14,7 @@ import {
   listAll,
   getDownloadURL,
   getMetadata,
+  list,
 } from "firebase/storage";
 
 const ResourceDetails = (props) => {
@@ -29,9 +30,11 @@ const ResourceDetails = (props) => {
   const [files, setFiles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [allFiles, setAllFiles] = useState([]);
+
   // console.log(id, "id");
 
-  // FETCH FILES
+  // FETCH ALL FILES
   useEffect(() => {
     const fetchFiles = () => {
       setIsLoading(true);
@@ -54,7 +57,7 @@ const ResourceDetails = (props) => {
                 type: metadata.contentType,
                 downloadURL,
               }));
-              setFiles(files);
+              setAllFiles(files);
               setIsLoading(false);
             })
             .catch((error) => {
@@ -69,6 +72,35 @@ const ResourceDetails = (props) => {
   }, [id]);
 
   // console.log(files, "files");
+
+  // FETCH FILES NEW
+  // const [files, setFiles] = useState([]);
+  const [pageToken, setPageToken] = useState(null);
+
+  const storage = getStorage();
+  const listRef = ref(storage, `${id}`);
+
+  useEffect(() => {
+    const fetchFirstPage = async () => {
+      const firstPage = await list(listRef, { maxResults: 10 });
+      setFiles(firstPage.items);
+      console.log(firstPage.items, ".item");
+      setPageToken(firstPage.nextPageToken);
+    };
+
+    fetchFirstPage();
+  }, [id]);
+
+  const fetchNextPage = async () => {
+    if (files.length < allFiles.length) {
+      const nextPage = await list(listRef, {
+        maxResults: 10,
+        pageToken: pageToken,
+      });
+      setFiles((prevFiles) => [...prevFiles, ...nextPage.items]);
+      setPageToken(nextPage.nextPageToken);
+    }
+  };
 
   useEffect(() => {
     setItemActive(id - 1);
@@ -87,6 +119,8 @@ const ResourceDetails = (props) => {
 
     window.scroll(0, position);
   }, []);
+
+  console.log(files, "files");
 
   return (
     <div className="resource-details">
@@ -127,7 +161,7 @@ const ResourceDetails = (props) => {
                 {!isLoading ? (
                   files.map((file, index) => {
                     const { name, size, downloadURL } = file;
-                    console.log(file);
+                    console.log(file, "file");
                     let fileType;
                     if (name.endsWith(".pdf")) {
                       // console.log("I love you");
@@ -158,6 +192,9 @@ const ResourceDetails = (props) => {
                 ) : (
                   <h2>Loading...</h2>
                 )}
+                <button className="button">
+                  <span onClick={fetchNextPage}>Load More</span>
+                </button>
               </div>
             </div>
           </div>

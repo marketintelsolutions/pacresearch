@@ -316,6 +316,36 @@
                 gap: 10px;
               }
             }
+
+            & .button {
+              background: rgb(242, 243, 247);
+              border: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: default;
+
+              & span {
+                height: 60px;
+                border: 1px solid var(--primary-blue);
+                padding: 30px;
+                font-size: 15px;
+                display: flex;
+                align-items: center;
+                border-radius: 25px;
+                justify-content: center;
+                cursor: pointer;
+                color: white;
+                background: var(--primary-blue);
+                transition: var(--transition);
+
+                &:hover {
+                  background: white;
+                  color: var(--primary-blue);
+                  transition: var(--transition);
+                }
+              }
+            }
           }
         }
       }
