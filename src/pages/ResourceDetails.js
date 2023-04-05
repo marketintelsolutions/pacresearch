@@ -89,6 +89,7 @@ const ResourceDetails = (props) => {
         setFiles(JSON.parse(localStorageFiles));
         return;
       }
+      setIsLoading(true);
 
       const firstPage = await list(listRef, {
         maxResults: 10,
