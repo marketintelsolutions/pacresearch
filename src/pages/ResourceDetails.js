@@ -37,7 +37,7 @@ const ResourceDetails = (props) => {
   // FETCH ALL FILES
   useEffect(() => {
     const fetchFiles = () => {
-      setIsLoading(true);
+      // setIsLoading(true);
       const storage = getStorage();
       const sectoralRef = ref(storage, `${id}`);
 
@@ -58,7 +58,7 @@ const ResourceDetails = (props) => {
                 downloadURL,
               }));
               setAllFiles(files);
-              setIsLoading(false);
+              // setIsLoading(false);
             })
             .catch((error) => {
               console.error("Error getting metadata and download URLs:", error);
@@ -82,10 +82,50 @@ const ResourceDetails = (props) => {
 
   useEffect(() => {
     const fetchFirstPage = async () => {
-      const firstPage = await list(listRef, { maxResults: 10 });
-      setFiles(firstPage.items);
-      console.log(firstPage.items, ".item");
+      // Check if files are already in localStorage
+      const localStorageFiles = localStorage.getItem(`${id}`);
+      console.log(localStorageFiles, "localStorageFiles");
+      if (localStorageFiles) {
+        setFiles(JSON.parse(localStorageFiles));
+        return;
+      }
+
+      const firstPage = await list(listRef, {
+        maxResults: 10,
+        metadata: ["name", "contentType"],
+      });
       setPageToken(firstPage.nextPageToken);
+
+      // setFiles(firstPage.items);
+      // setFiles(
+      //   firstPage.items.map((item) => ({
+      //     name: item.name,
+      //     type: item.contentType,
+      //     downloadUrl: getDownloadURL(item),
+      //   }))
+      // );
+      Promise.all(
+        firstPage.items.map((itemRef) =>
+          Promise.all([getMetadata(itemRef), getDownloadURL(itemRef)])
+        )
+      )
+        .then((fileData) => {
+          const files = fileData.map(([metadata, downloadURL]) => ({
+            name: metadata.name,
+            size: metadata.size,
+            type: metadata.contentType,
+            downloadURL,
+          }));
+          setFiles(files);
+          setIsLoading(false);
+
+          // Update localStorage
+          localStorage.setItem(`${id}`, JSON.stringify(files));
+        })
+        .catch((error) => {
+          console.error("Error getting metadata and download URLs:", error);
+        });
+      // console.log(firstPage.items, ".item");
     };
 
     fetchFirstPage();
@@ -99,6 +139,12 @@ const ResourceDetails = (props) => {
       });
       setFiles((prevFiles) => [...prevFiles, ...nextPage.items]);
       setPageToken(nextPage.nextPageToken);
+
+      // Update localStorage
+      localStorage.setItem(
+        `${id}`,
+        JSON.stringify([...files, ...nextPage.items])
+      );
     }
   };
 
@@ -192,6 +238,11 @@ const ResourceDetails = (props) => {
                 ) : (
                   <h2>Loading...</h2>
                 )}
+                {/* {files < allFiles && (
+                  <button className="button">
+                    <span onClick={fetchNextPage}>Load More</span>
+                  </button>
+                )} */}
                 <button className="button">
                   <span onClick={fetchNextPage}>Load More</span>
                 </button>
