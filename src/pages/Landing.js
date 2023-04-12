@@ -105,7 +105,10 @@ const Landing = () => {
                 const { icon, text } = item;
                 return (
                   <div className="about-item">
-                    <span>{icon}</span> {text}{" "}
+                    <p>
+                      {" "}
+                      <span>{icon}</span> {text}{" "}
+                    </p>
                   </div>
                 );
               })}

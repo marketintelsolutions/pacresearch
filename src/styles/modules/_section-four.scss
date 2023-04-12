@@ -2,7 +2,7 @@
   & .section-four {
     // border: 2px solid red;
     min-height: 400px;
-    padding: 80px 0;
+    padding: 80px 40px;
     z-index: 3;
     background: white;
     z-index: 4;
@@ -21,6 +21,11 @@
       display: flex;
       justify-content: space-between;
 
+      @media (max-width: $breakpoint-tablet) {
+        flex-direction: column;
+        gap: 30px;
+      }
+
       & a {
         padding: 12px 36px;
         font-size: 1.15rem;
@@ -36,6 +41,15 @@
         gap: 10px;
         color: var(--primary-blue);
         text-decoration: none;
+
+        @media (max-width: $breakpoint-large) {
+          font-size: 0.9rem;
+          padding: 10px 30px;
+        }
+        @media (max-width: $breakpoint-tablet) {
+          font-size: 0.7rem;
+          padding: 8px 24px;
+        }
 
         &:hover {
           cursor: pointer;
@@ -55,6 +69,10 @@
       text-transform: capitalize;
       line-height: 1.2;
       color: black;
+
+      @media (max-width: $breakpoint-tablet) {
+        width: 100%;
+      }
     }
 
     & .content {
@@ -62,6 +80,12 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 30px;
+
+      @media (max-width: $breakpoint-large) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
       & .business-item {
         border: 1px solid var(--primary-blue);
@@ -73,6 +97,16 @@
         padding: 20px 15px;
         position: relative;
         z-index: 3;
+
+        @media (max-width: $breakpoint-large) {
+          width: 300px;
+        }
+        @media (max-width: $breakpoint-tablet) {
+          width: 250px;
+        }
+        @media (max-width: $breakpoint-mobile) {
+          width: 300px;
+        }
 
         & span {
           font-size: 40px;

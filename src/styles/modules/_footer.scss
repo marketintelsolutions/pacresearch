@@ -7,8 +7,9 @@ footer {
   gap: 50px;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 100px 0;
+  padding: 100px 40px;
   position: relative;
+  overflow-x: hidden;
   z-index: 4;
 
   &:before {
@@ -30,18 +31,41 @@ footer {
     // gap: 50px;
     justify-content: space-between;
     z-index: 3;
+
+    @media (max-width: $breakpoint-large) {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-content: center;
+      gap: 80px;
+      row-gap: 40px;
+    }
+    @media (max-width: $breakpoint-tablet) {
+      grid-template-columns: 1fr;
+    }
   }
 
   & .top {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: fit-content;
+    // border: 2px solid red;
 
     & img {
       width: 160px;
       height: 60px;
       // background: white;
       padding: 10px;
+
+      @media (max-width: $breakpoint-large) {
+        width: 150px;
+        height: 55px;
+      }
+      @media (max-width: $breakpoint-tablet) {
+        width: 130px;
+        height: 50px;
+      }
     }
 
     & .text {
@@ -52,10 +76,24 @@ footer {
         // color: var(--primary-purple);
         color: white;
         font-size: 18px;
+
+        @media (max-width: $breakpoint-large) {
+          font-size: 16px;
+        }
+        @media (max-width: $breakpoint-tablet) {
+          font-size: 14px;
+        }
       }
 
       & p {
         font-size: 14px;
+
+        @media (max-width: $breakpoint-large) {
+          font-size: 12px;
+        }
+        @media (max-width: $breakpoint-tablet) {
+          font-size: 11px;
+        }
       }
     }
   }
@@ -71,16 +109,31 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: fit-content;
 
     & h1 {
       font-size: 15px;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: rgba(255, 255, 255, 0.75);
+
+      @media (max-width: $breakpoint-large) {
+        font-size: 14px;
+      }
+      @media (max-width: $breakpoint-tablet) {
+        font-size: 12px;
+      }
     }
 
     & p {
       font-size: 14px;
+
+      @media (max-width: $breakpoint-large) {
+        font-size: 12px;
+      }
+      @media (max-width: $breakpoint-tablet) {
+        font-size: 11px;
+      }
 
       & .links {
         text-decoration: none;
@@ -92,6 +145,13 @@ footer {
       display: flex;
       gap: 20px;
       font-size: 20px;
+
+      @media (max-width: $breakpoint-large) {
+        font-size: 18px;
+      }
+      @media (max-width: $breakpoint-tablet) {
+        font-size: 16px;
+      }
     }
   }
   // }
@@ -104,5 +164,12 @@ footer {
     width: var(--width-standard);
     margin: 0 auto;
     z-index: 3;
+
+    @media (max-width: $breakpoint-large) {
+      font-size: 11px;
+    }
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 10px;
+    }
   }
 }
