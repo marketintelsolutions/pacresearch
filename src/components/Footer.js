@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/logo/logo.png";
+import logo from "../assets/logo/logo_white.png";
 import { GoLocation } from "react-icons/go";
 import { BsTwitter, BsFacebook, BsInstagram } from "react-icons/bs";
 import { Link } from "react-router-dom";

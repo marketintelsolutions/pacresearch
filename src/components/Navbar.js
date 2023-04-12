@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import logoWhite from "../assets/logo/logo_white.png";
 import logo from "../assets/logo/logo.png";
 import { MdOutlineLightMode } from "react-icons/md";
 import { links } from "../utils/data";
@@ -22,7 +23,11 @@ const Navbar = () => {
   return (
     <nav className={scrollPosition > 100 ? "navbar-scrolled navbar" : "navbar"}>
       <div className="center">
-        <img src={logo} alt="logo" />
+        {scrollPosition > 100 ? (
+          <img src={logo} alt="logo" />
+        ) : (
+          <img src={logoWhite} alt="logo" />
+        )}
         <div className="links">
           {links.map((item, index) => (
             <Link className="item" key={index} to={item.path}>
