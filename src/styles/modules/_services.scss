@@ -270,13 +270,49 @@
         padding: 20px;
         width: 300px;
         height: 200px;
+        position: relative;
+
+        &:before {
+          content: "";
+          border-radius: inherit;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          top: 0;
+          // left: 0;
+          right: 0;
+          transform: scaleX(0);
+          transform-origin: right;
+          background-color: white;
+          // z-index: -3;
+          transition: transform 0.5s ease 0s;
+        }
+
+        &:hover {
+          & span {
+            color: var(--primary-blue);
+          }
+          & p {
+            color: var(--primary-blue);
+          }
+
+          &:before {
+            top: 0;
+            // left: 0;
+            // right: auto;
+            transform: scaleX(1);
+            transform-origin: left;
+          }
+        }
 
         & span {
           font-size: 40px;
+          z-index: 4;
         }
         & p {
           font-size: 30px;
           text-transform: capitalize;
+          z-index: 4;
         }
       }
     }
