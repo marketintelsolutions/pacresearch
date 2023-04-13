@@ -196,7 +196,6 @@
           button {
             font-size: 16px;
             color: var(--primary-blue);
-            // border: 2px solid var(--primary-blue-200);
             border: none;
             width: max-content;
             background: transparent;
@@ -214,7 +213,6 @@
         }
         & .reversed {
           flex-direction: row-reverse;
-          // grid-template-columns: auto 1fr;
         }
       }
     }

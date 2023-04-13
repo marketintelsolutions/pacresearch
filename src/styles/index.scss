@@ -46,6 +46,9 @@
     @media (max-width: $breakpoint-tablet) {
       font-size: 40px;
     }
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 35px;
+    }
   }
 
   & p {
