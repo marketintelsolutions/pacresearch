@@ -1,8 +1,9 @@
 .resources {
+  overflow-x: hidden;
   & .section-one {
     // border: 2px solid red;
     background: white;
-    padding: 100px 0;
+    padding: 100px 40px;
 
     & .content-head-center {
       margin: 0 auto;
@@ -12,8 +13,31 @@
       grid-template-columns: auto 1fr;
       gap: 40px;
 
+      @media (max-width: $breakpoint-large) {
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        // border: 2px solid red;
+        height: fit-content;
+        // gap: 160px;
+        gap: 30px;
+      }
+      @media (max-width: $breakpoint-tablet) {
+        gap: 20px;
+      }
+
       & .left {
         width: 400px;
+
+        @media (max-width: $breakpoint-large) {
+          width: 700px;
+          height: 400px;
+          margin: 0 auto;
+        }
+        @media (max-width: $breakpoint-tablet) {
+        }
 
         & .all {
           display: flex;
@@ -26,6 +50,15 @@
           color: white;
           border-radius: 10px;
 
+          @media (max-width: $breakpoint-large) {
+            gap: 30px;
+            padding: 40px;
+          }
+          @media (max-width: $breakpoint-tablet) {
+            gap: 20px;
+            padding: 30px;
+          }
+
           & span {
             border: 1px solid white;
             border-radius: 50%;
@@ -35,6 +68,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
+            @media (max-width: $breakpoint-large) {
+              font-size: 45px;
+              height: 120px;
+              width: 120px;
+            }
+            @media (max-width: $breakpoint-tablet) {
+              font-size: 40px;
+              height: 100px;
+              width: 100px;
+            }
           }
 
           & .text {
@@ -45,11 +89,25 @@
             gap: 15px;
             & h2 {
               font-size: 30px;
+
+              @media (max-width: $breakpoint-large) {
+                font-size: 25px;
+              }
+              @media (max-width: $breakpoint-tablet) {
+                font-size: 20px;
+              }
             }
 
             & p {
               font-size: 25px;
               text-transform: capitalize;
+
+              @media (max-width: $breakpoint-large) {
+                font-size: 20px;
+              }
+              @media (max-width: $breakpoint-tablet) {
+                font-size: 17px;
+              }
             }
           }
           & button {
@@ -60,6 +118,18 @@
             height: 60px;
             cursor: pointer;
             border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @media (max-width: $breakpoint-large) {
+              height: 55px;
+              font-size: 18px;
+            }
+            @media (max-width: $breakpoint-tablet) {
+              height: 50px;
+              font-size: 15px;
+            }
 
             & a {
               display: flex;
@@ -86,6 +156,14 @@
           grid-auto-rows: auto;
           row-gap: 50px;
 
+          @media (max-width: $breakpoint-large) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+          @media (max-width: $breakpoint-tablet) {
+          }
+
           & .item {
             display: flex;
             flex-direction: row;
@@ -102,6 +180,10 @@
             position: relative;
             width: 335px;
 
+            @media (max-width: $breakpoint-large) {
+              margin: 0 auto;
+            }
+
             & span {
               font-size: 45px;
               background: var(--primary-blue);
@@ -115,6 +197,17 @@
               justify-content: center;
               border-radius: 5px;
               box-shadow: 1px 1px 15px 1px rgb(159, 158, 158);
+
+              @media (max-width: $breakpoint-large) {
+                font-size: 40px;
+                width: 80px;
+                height: 80px;
+              }
+              @media (max-width: $breakpoint-tablet) {
+                font-size: 35px;
+                width: 70px;
+                height: 70px;
+              }
             }
 
             & .text {
@@ -129,6 +222,13 @@
                 // border: 2px solid red;
                 text-align: right;
                 height: 60px;
+
+                @media (max-width: $breakpoint-large) {
+                  font-size: 25px;
+                }
+                @media (max-width: $breakpoint-tablet) {
+                  font-size: 20px;
+                }
               }
 
               & p {
