@@ -213,6 +213,11 @@
         }
         & .reversed {
           flex-direction: row-reverse;
+
+          @media (max-width: $breakpoint-large) {
+            // font-size: 0.9rem;
+            flex-direction: row;
+          }
         }
       }
     }
@@ -220,6 +225,7 @@
 
   & .section-three {
     // border: 2px solid red;
+
     display: flex;
     flex-direction: column;
     gap: 60px;

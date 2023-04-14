@@ -275,7 +275,7 @@
   & .section-two {
     background: rgb(239, 241, 242);
     // border: 2px solid red;
-    padding: 100px 0;
+    padding: 100px 40px;
 
     & .content-center {
       min-height: 400px;
@@ -303,6 +303,10 @@
           flex-direction: column;
           gap: 30px;
 
+          @media (max-width: $breakpoint-large) {
+            min-width: auto;
+          }
+
           & .item {
             display: flex;
             gap: 20px;
@@ -317,6 +321,12 @@
             & h2 {
               font-size: 16px;
               text-transform: capitalize;
+
+              @media (max-width: $breakpoint-large) {
+                display: none;
+              }
+              @media (max-width: $breakpoint-tablet) {
+              }
             }
           }
 
@@ -353,6 +363,26 @@
               text-transform: capitalize;
             }
 
+            & h3 {
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              text-transform: capitalize;
+              font-size: 20px;
+
+              & span {
+                background: none;
+                color: var(--primary-blue);
+              }
+
+              @media (max-width: $breakpoint-large) {
+                font-size: 17px;
+              }
+              @media (max-width: $breakpoint-tablet) {
+                font-size: 14px;
+              }
+            }
+
             & span {
               padding: 6px 8px;
               // background: rgb(225, 238, 240);
@@ -372,6 +402,14 @@
             gap: 30px;
             width: 100%;
 
+            @media (max-width: $breakpoint-large) {
+              grid-template-columns: repeat(2, 1fr);
+              justify-content: center;
+            }
+            @media (max-width: $breakpoint-tablet) {
+              grid-template-columns: repeat(1, 1fr);
+            }
+
             & .item {
               padding: 70px 20px 50px;
               background: white;
@@ -385,6 +423,17 @@
               text-decoration: none;
               color: var(--primary-blue);
 
+              @media (max-width: $breakpoint-large) {
+                width: 220px;
+                gap: 10px;
+                padding: 60px 25px 40px;
+              }
+              @media (max-width: $breakpoint-tablet) {
+                width: 200px;
+                gap: 0px;
+                padding: 50px 20px 30px;
+              }
+
               & span {
                 position: absolute;
                 top: -18px;
@@ -392,7 +441,6 @@
                 font-size: 42px;
                 background: var(--primary-blue);
                 color: white;
-
                 box-shadow: 1px 2px 10px 2px rgb(198, 194, 194);
                 border-radius: 50%;
                 width: 65px;
@@ -400,6 +448,17 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
+                @media (max-width: $breakpoint-large) {
+                  font-size: 35px;
+                  width: 60px;
+                  height: 60px;
+                }
+                @media (max-width: $breakpoint-tablet) {
+                  font-size: 32px;
+                  width: 55px;
+                  height: 55px;
+                }
               }
 
               & h2 {
@@ -408,12 +467,26 @@
                 // border: 2px solid red;
                 word-wrap: break-word;
                 height: 60px;
+
+                @media (max-width: $breakpoint-large) {
+                  font-size: 13px;
+                }
+                @media (max-width: $breakpoint-tablet) {
+                  font-size: 11px;
+                }
               }
 
               & p {
                 display: flex;
                 align-items: center;
                 gap: 10px;
+
+                @media (max-width: $breakpoint-large) {
+                  font-size: 13px;
+                }
+                @media (max-width: $breakpoint-tablet) {
+                  font-size: 11px;
+                }
               }
             }
 

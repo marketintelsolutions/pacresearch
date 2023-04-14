@@ -32,7 +32,7 @@ const ResourceDetails = (props) => {
 
   const [allFiles, setAllFiles] = useState([]);
 
-  // console.log(id, "id");
+  console.log(id, "id");
 
   // FETCH ALL FILES
   useEffect(() => {
@@ -233,6 +233,9 @@ const ResourceDetails = (props) => {
             <div className="left">
               <div className="top">
                 <p>total</p> <span>{files.length}</span>
+                <h3>
+                  <span>{id}</span>
+                </h3>
               </div>
               <div className="bottom">
                 {!isLoading ? (

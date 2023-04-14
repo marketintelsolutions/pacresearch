@@ -39,7 +39,7 @@ export const links = [
   },
   {
     text: "business processes",
-    path: "/business-processes",
+    path: "/business",
   },
   {
     text: "resources",
