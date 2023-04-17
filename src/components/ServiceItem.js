@@ -1,5 +1,6 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const ServiceItem = ({
   heading,
@@ -26,9 +27,9 @@ const ServiceItem = ({
           </ul>
         )}
         {button && (
-          <button>
+          <Link to="/services">
             Read More <BsArrowRight />
-          </button>
+          </Link>
         )}
       </div>
     </div>
