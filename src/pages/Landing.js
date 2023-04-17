@@ -6,7 +6,7 @@ import {
   GrInstagram,
   GrTwitter,
 } from "react-icons/gr";
-import researchBooks from "../assets/images/researchBooks.jpg";
+import researchBooks from "../assets/images/researchBooks.png";
 import aboutText from "../assets/images/aboutText.jpg";
 import Heading from "../components/Heading";
 import ServiceItem from "../components/ServiceItem";
