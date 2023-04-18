@@ -33,7 +33,6 @@ const Navbar = () => {
     };
   }, []);
 
-
   return (
     <nav className={scrollPosition > 100 ? "navbar-scrolled navbar" : "navbar"}>
       <div className="center">
