@@ -1,5 +1,5 @@
 import { AiOutlineAppstoreAdd } from "react-icons/ai";
-import { TbSeo } from "react-icons/tb";
+import { TbReportAnalytics, TbSeo } from "react-icons/tb";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { SiOnlyoffice, SiSpringsecurity } from "react-icons/si";
 import { BsDatabaseFillCheck } from "react-icons/bs";
@@ -49,7 +49,7 @@ export const headings = [
   {
     id: 2,
     text: "equity report",
-    icon: <TbSeo />,
+    icon: <TbReportAnalytics />,
     color: "#a4a4a4",
 
     items: [

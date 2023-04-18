@@ -306,6 +306,12 @@
           @media (max-width: $breakpoint-large) {
             min-width: auto;
           }
+          @media (max-width: $breakpoint-tablet) {
+            padding: 18px;
+          }
+          @media (max-width: $breakpoint-mobile) {
+            padding: 15px;
+          }
 
           & .item {
             display: flex;
@@ -315,8 +321,22 @@
             cursor: pointer;
             text-decoration: none;
 
+            @media (max-width: $breakpoint-tablet) {
+              padding: 18px;
+            }
+            @media (max-width: $breakpoint-mobile) {
+              padding: 15px;
+            }
+
             & span {
               font-size: 20px;
+
+              @media (max-width: $breakpoint-tablet) {
+                font-size: 18px;
+              }
+              @media (max-width: $breakpoint-mobile) {
+                font-size: 16px;
+              }
             }
             & h2 {
               font-size: 16px;
@@ -358,6 +378,13 @@
             align-items: center;
             height: 70px;
 
+            @media (max-width: $breakpoint-tablet) {
+              font-size: 14px;
+            }
+            @media (max-width: $breakpoint-mobile) {
+              font-size: 12px;
+            }
+
             & p {
               color: black;
               text-transform: capitalize;
@@ -376,10 +403,10 @@
               }
 
               @media (max-width: $breakpoint-large) {
-                font-size: 17px;
+                font-size: 16px;
               }
               @media (max-width: $breakpoint-tablet) {
-                font-size: 14px;
+                font-size: 13px;
               }
             }
 
@@ -429,9 +456,9 @@
                 padding: 60px 25px 40px;
               }
               @media (max-width: $breakpoint-tablet) {
-                width: 200px;
+                width: 180px;
                 gap: 0px;
-                padding: 50px 20px 30px;
+                padding: 50px 20px 20px;
               }
 
               & span {
@@ -450,14 +477,14 @@
                 justify-content: center;
 
                 @media (max-width: $breakpoint-large) {
-                  font-size: 35px;
+                  font-size: 33px;
                   width: 60px;
                   height: 60px;
                 }
                 @media (max-width: $breakpoint-tablet) {
-                  font-size: 32px;
-                  width: 55px;
-                  height: 55px;
+                  font-size: 30px;
+                  width: 52px;
+                  height: 52px;
                 }
               }
 
@@ -511,6 +538,15 @@
                 color: white;
                 background: var(--primary-blue);
                 transition: var(--transition);
+
+                @media (max-width: $breakpoint-tablet) {
+                  font-size: 13px;
+                  padding: 25px;
+                }
+                @media (max-width: $breakpoint-mobile) {
+                  font-size: 11px;
+                  padding: 10px 15px;
+                }
 
                 &:hover {
                   background: white;

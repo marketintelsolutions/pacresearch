@@ -54,11 +54,11 @@ const Footer = () => {
         </div>
         <div className="item">
           <h1>resources</h1>
-          <p>
+          {/* <p>
             <Link to="/services" className="links">
               Services
             </Link>
-          </p>
+          </p> */}
           <p>
             <Link to="/services" className="links">
               Resources
