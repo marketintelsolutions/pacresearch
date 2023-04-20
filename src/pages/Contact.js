@@ -56,7 +56,7 @@ const Contact = () => {
             <button onClick={() => setIsFormOpen(true)}>contact support</button>
           </div>
         </div>
-        <h2>Connect with one of our global offices</h2>
+        <h2>Connect with our office headquaters</h2>
         <div className="map-center">
           <div className="map">
             <iframe
