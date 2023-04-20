@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageHeader from "../components/PageHeader";
 import contact from "../assets/images/contact.webp";
 import { BsFillTelephoneFill } from "react-icons/bs";
@@ -7,6 +7,11 @@ import { GrFormClose } from "react-icons/gr";
 
 const Contact = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
     <section className="contact">
       <PageHeader text="contact" />

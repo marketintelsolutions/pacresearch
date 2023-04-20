@@ -12,9 +12,10 @@ import {
   getStorage,
   ref,
   listAll,
-  getDownloadURL,
   getMetadata,
   list,
+  uploadBytesResumable,
+  getDownloadURL,
   // storageRef,
 } from "firebase/storage";
 // import firebase from "firebase";
@@ -34,13 +35,15 @@ const ResourcesAdmin = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [allFiles, setAllFiles] = useState([]);
+  const [progress, setProgress] = useState(0);
+  const [isUpload, setIsUpload] = useState(false);
+  const [isUploadOpen, setIsUploadOpen] = useState(true);
 
   console.log(id, "id");
 
   // FETCH ALL FILES
   useEffect(() => {
     const fetchFiles = () => {
-      // setIsLoading(true);
       const storage = getStorage();
       const sectoralRef = ref(storage, `${id}`);
 
@@ -61,7 +64,6 @@ const ResourcesAdmin = () => {
                 downloadURL,
               }));
               setAllFiles(files);
-              // setIsLoading(false);
             })
             .catch((error) => {
               console.error("Error getting metadata and download URLs:", error);
@@ -181,37 +183,90 @@ const ResourcesAdmin = () => {
   const [newFiles, setNewFiles] = useState([]);
 
   const handleFileChange = (event) => {
-    setNewFiles(event.target.files[0]);
+    console.log(event.target.files);
+    const filesObj = event.target.files;
+
+    const filesArr = [];
+
+    for (let i in filesObj) {
+      if (i !== "length" && i !== "item") {
+        filesArr.push(filesObj[i]);
+      }
+    }
+    console.log(filesArr, "files");
+    setNewFiles(filesArr);
   };
 
-  const handleUpload = () => {
-    const storage = getStorage();
-    const storageRef = ref(storage, `new/`);
+  const handleUpload = (e) => {
+    e.preventDefault();
+    setIsUpload(true);
 
-    // const storageRef = storage().ref(`new/`);
-    // const storageRef = firebase.storage().ref('path/to/');
+    const files = newFiles;
+
+    // Create the file metadata
+    const metadata = {
+      contentType: "application/pdf",
+    };
 
     Array.from(files).forEach((file) => {
-      const fileRef = storageRef.child(file.name);
-      const task = fileRef.put(file);
-      task.on(
+      console.log("hello", files);
+      const storageRef = ref(storage, "new/" + file.name);
+      const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+
+      // Listen for state changes, errors, and completion of the upload
+      uploadTask.on(
         "state_changed",
         (snapshot) => {
-          // Handle progress
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log(`Upload of ${file.name} is ${progress}% done`);
+          console.log("Upload is " + progress + "% done");
+          setProgress(progress);
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+          }
         },
         (error) => {
-          // Handle error
-          console.error(error);
+          // Handle unsuccessful uploads
+          switch (error.code) {
+            case "storage/unauthorized":
+              // User doesn't have permission to access the object
+              break;
+            case "storage/canceled":
+              // User canceled the upload
+              break;
+            // ...
+            case "storage/unknown":
+              // Unknown error occurred, inspect error.serverResponse
+              break;
+          }
         },
         () => {
-          // Handle success
-          console.log(`Upload of ${file.name} completed successfully`);
+          // Handle successful uploads
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log("File available at", downloadURL);
+          });
+
+          setTimeout(() => {
+            setIsUploadOpen(false);
+            setNewFiles([]);
+            setIsUpload(false);
+          }, 3000);
         }
       );
     });
+  };
+
+  // REMOVE ITEM
+  const removeItem = (item) => {
+    const updatedFiles = newFiles.filter((file) => file.name !== item.name);
+
+    setNewFiles(updatedFiles);
   };
 
   return (
@@ -253,9 +308,20 @@ const ResourcesAdmin = () => {
                 <h3>
                   <span>{id}</span>
                 </h3>
+
+                {/* UPLOAD FILES */}
+
                 <div className="button">
-                  <label htmlFor="upload">Choose...</label>
-                  <button onClick={handleUpload}>Upload</button>
+                  <label htmlFor="upload" className="label">
+                    Select files
+                  </label>
+
+                  <button
+                    className="upload-button"
+                    onClick={() => setIsUploadOpen(true)}
+                  >
+                    Upload
+                  </button>
                   <input
                     type="file"
                     id="upload"
@@ -263,10 +329,68 @@ const ResourcesAdmin = () => {
                     multiple
                     onChange={handleFileChange}
                   />
-                  {/* <div className="upload">
-                    <input type="file" onChange={handleFileChange} />
-                    <button onClick={handleUpload}>Upload</button>
-                  </div> */}
+                  {isUploadOpen && (
+                    <div className="upload-file">
+                      <div className="content-center">
+                        <div
+                          className="close"
+                          onClick={() => setIsUploadOpen(false)}
+                        >
+                          x
+                        </div>
+
+                        {newFiles.length > 0 ? (
+                          <>
+                            {isUpload && (
+                              <span>
+                                {progress === 100 ? (
+                                  <p>Upload Complete</p>
+                                ) : (
+                                  <>
+                                    Uploading... {progress.toFixed(2)}%{" "}
+                                    <progress value={progress} max="100" />{" "}
+                                  </>
+                                )}
+                              </span>
+                            )}
+                            <button onClick={handleUpload} className="label">
+                              Upload
+                            </button>
+                            <h2>
+                              Selected Files:{" "}
+                              <span
+                                className="label"
+                                onClick={() => setNewFiles([])}
+                              >
+                                clear all
+                              </span>
+                            </h2>
+                            {newFiles?.map((item, index) => (
+                              <p>
+                                {index + 1}. {item.name}{" "}
+                                <span onClick={() => removeItem(item)}>x</span>
+                              </p>
+                            ))}
+                          </>
+                        ) : (
+                          <>
+                            {" "}
+                            <h2>No files selected</h2>
+                            <label htmlFor="upload" className="label">
+                              Select files
+                            </label>
+                            <input
+                              type="file"
+                              id="upload"
+                              name="upload"
+                              multiple
+                              onChange={handleFileChange}
+                            />
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="bottom">
