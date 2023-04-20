@@ -42,6 +42,7 @@ const Contact = () => {
               member of our sales team.
             </p>
             <p className="phone">+234 (1) 2716892</p>
+            <p className="phone">+234 (1) 2718630</p>
           </div>
           <div className="right item">
             <span>
