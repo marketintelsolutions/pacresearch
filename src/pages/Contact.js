@@ -113,7 +113,7 @@ const Contact = () => {
               <label htmlFor="message">Message</label>
               <textarea name="message"></textarea>
             </div>
-            <button>contact us</button>
+            <button type="button">contact us</button>
           </form>
         </div>
       )}

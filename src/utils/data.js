@@ -45,10 +45,10 @@ export const links = [
     text: "resources",
     path: "/resources",
   },
-  {
-    text: "contact",
-    path: "/contact",
-  },
+  // {
+  //   text: "contact",
+  //   path: "/contact",
+  // },
 ];
 
 export const services = [

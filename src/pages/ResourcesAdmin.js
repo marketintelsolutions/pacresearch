@@ -16,8 +16,7 @@ import {
   getMetadata,
   list,
 } from "firebase/storage";
-
-const ResourceDetails = (props) => {
+const ResourcesAdmin = () => {
   //   const userId = props.match.params.id;
   const { id } = useParams();
   const location = useLocation();
@@ -164,18 +163,6 @@ const ResourceDetails = (props) => {
         .catch((error) => {
           console.error("Error getting metadata and download URLs:", error);
         });
-      // setFiles((prevFiles) => [...prevFiles, ...nextPage.items]);
-
-      // localStorage.removeItem(`${id}`);
-
-      // previous local storage items
-      // const prevItems = JSON.parse(localStorage.getItem(`${id}`));
-
-      // Update localStorage
-      // localStorage.setItem(
-      //   `${id}`,
-      //   JSON.stringify([...prevItems, ...nextPage.items])
-      // );
     }
   };
 
@@ -222,7 +209,7 @@ const ResourceDetails = (props) => {
                   <Link
                     key={index}
                     className={`${text === id ? "item active" : "item"}`}
-                    to={`/resources/${text}`}
+                    to={`/resources/${text}/pacadmin101`}
                   >
                     <span>{icon}</span>
                     <h2>{text}</h2>
@@ -233,14 +220,14 @@ const ResourceDetails = (props) => {
             <div className="left">
               <div className="top">
                 <div className="total">
-                  <p>total</p>{" "}
-                  <p className="length">
-                    <span>{files.length}</span>
-                  </p>
+                  <p>total</p> <span>{files.length}</span>
                 </div>
                 <h3>
                   <span>{id}</span>
                 </h3>
+                <div className="button">
+                  <button>Upload</button>
+                </div>
               </div>
               <div className="bottom">
                 {!isLoading ? (
@@ -294,4 +281,4 @@ const ResourceDetails = (props) => {
   );
 };
 
-export default ResourceDetails;
+export default ResourcesAdmin;

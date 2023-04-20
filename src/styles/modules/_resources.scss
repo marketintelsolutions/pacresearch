@@ -373,10 +373,11 @@
             // border: 2px solid red;
             padding: 20px 0;
             font-size: 16px;
-            display: flex;
+            display: grid;
             gap: 20px;
             align-items: center;
             height: 70px;
+            grid-template-columns: 1fr 1fr 1fr;
 
             @media (max-width: $breakpoint-tablet) {
               font-size: 14px;
@@ -385,17 +386,24 @@
               font-size: 12px;
             }
 
+            & .total {
+              display: flex;
+              gap: 30px;
+              align-items: center;
+            }
+
             & p {
               color: black;
               text-transform: capitalize;
             }
 
             & h3 {
-              width: 100%;
-              display: flex;
-              justify-content: center;
+              // width: 100%;
+              // display: flex;
+              // justify-content: center;
               text-transform: capitalize;
               font-size: 20px;
+              // border: 2px solid red;
 
               & span {
                 background: none;
@@ -410,13 +418,38 @@
               }
             }
 
+            & .length {
+              // border: 1px solid red;
+            }
+
             & span {
               padding: 6px 8px;
               // background: rgb(225, 238, 240);
               background: var(--primary-blue);
               border-radius: 3px;
               color: white;
+              width: 15%;
               // border: 1px solid var(--primary-blue);
+            }
+
+            & .button {
+              & button {
+                border: none;
+                width: fit-content;
+                padding: 10px 20px;
+                border: 1px solid var(--primary-blue);
+                font-size: 15px;
+                background: transparent;
+                border-radius: 15px;
+                transition: var(--transition);
+
+                &:hover {
+                  cursor: pointer;
+                  background: var(--primary-blue);
+                  transition: var(--transition);
+                  color: white;
+                }
+              }
             }
           }
 

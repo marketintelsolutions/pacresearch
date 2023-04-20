@@ -9,6 +9,7 @@ import {
   Services,
   Error,
   Contact,
+  ResourcesAdmin,
 } from "./pages";
 import ResourceDetails from "./pages/ResourceDetails";
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/business" element={<Business />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/resources/:id" element={<ResourceDetails />} />
+        <Route path="/resources/:id/pacadmin101" element={<ResourcesAdmin />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Error />} />
       </Routes>
