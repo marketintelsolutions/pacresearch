@@ -15,7 +15,11 @@ import {
   getDownloadURL,
   getMetadata,
   list,
+  // storageRef,
 } from "firebase/storage";
+// import firebase from "firebase";
+// import "firebase/storage";
+
 const ResourcesAdmin = () => {
   //   const userId = props.match.params.id;
   const { id } = useParams();
@@ -70,10 +74,7 @@ const ResourcesAdmin = () => {
     fetchFiles();
   }, [id]);
 
-  // console.log(files, "files");
-
   // FETCH FILES NEW
-  // const [files, setFiles] = useState([]);
   const [pageToken, setPageToken] = useState(null);
 
   const storage = getStorage();
@@ -96,14 +97,6 @@ const ResourcesAdmin = () => {
       });
       setPageToken(firstPage.nextPageToken);
 
-      // setFiles(firstPage.items);
-      // setFiles(
-      //   firstPage.items.map((item) => ({
-      //     name: item.name,
-      //     type: item.contentType,
-      //     downloadUrl: getDownloadURL(item),
-      //   }))
-      // );
       Promise.all(
         firstPage.items.map((itemRef) =>
           Promise.all([getMetadata(itemRef), getDownloadURL(itemRef)])
@@ -125,7 +118,6 @@ const ResourcesAdmin = () => {
         .catch((error) => {
           console.error("Error getting metadata and download URLs:", error);
         });
-      // console.log(firstPage.items, ".item");
     };
 
     fetchFirstPage();
@@ -184,7 +176,43 @@ const ResourcesAdmin = () => {
     window.scroll(0, position);
   }, []);
 
-  // console.log(files, "files");
+  // UPLOAD FILE
+  // const [file, setFile] = useState(null);
+  const [newFiles, setNewFiles] = useState([]);
+
+  const handleFileChange = (event) => {
+    setNewFiles(event.target.files[0]);
+  };
+
+  const handleUpload = () => {
+    const storage = getStorage();
+    const storageRef = ref(storage, `new/`);
+
+    // const storageRef = storage().ref(`new/`);
+    // const storageRef = firebase.storage().ref('path/to/');
+
+    Array.from(files).forEach((file) => {
+      const fileRef = storageRef.child(file.name);
+      const task = fileRef.put(file);
+      task.on(
+        "state_changed",
+        (snapshot) => {
+          // Handle progress
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log(`Upload of ${file.name} is ${progress}% done`);
+        },
+        (error) => {
+          // Handle error
+          console.error(error);
+        },
+        () => {
+          // Handle success
+          console.log(`Upload of ${file.name} completed successfully`);
+        }
+      );
+    });
+  };
 
   return (
     <div className="resource-details">
@@ -226,7 +254,19 @@ const ResourcesAdmin = () => {
                   <span>{id}</span>
                 </h3>
                 <div className="button">
-                  <button>Upload</button>
+                  <label htmlFor="upload">Choose...</label>
+                  <button onClick={handleUpload}>Upload</button>
+                  <input
+                    type="file"
+                    id="upload"
+                    name="upload"
+                    multiple
+                    onChange={handleFileChange}
+                  />
+                  {/* <div className="upload">
+                    <input type="file" onChange={handleFileChange} />
+                    <button onClick={handleUpload}>Upload</button>
+                  </div> */}
                 </div>
               </div>
               <div className="bottom">
