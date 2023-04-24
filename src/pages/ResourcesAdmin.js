@@ -37,7 +37,7 @@ const ResourcesAdmin = () => {
   const [allFiles, setAllFiles] = useState([]);
   const [progress, setProgress] = useState(0);
   const [isUpload, setIsUpload] = useState(false);
-  const [isUploadOpen, setIsUploadOpen] = useState(true);
+  const [isUploadOpen, setIsUploadOpen] = useState(false);
 
   console.log(id, "id");
 
