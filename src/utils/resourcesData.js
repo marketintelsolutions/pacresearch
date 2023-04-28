@@ -254,6 +254,11 @@ export const headings = [
     text: "all",
     icon: <VscRunAll />,
   },
+  {
+    id: 7,
+    text: "new",
+    icon: <VscRunAll />,
+  },
 ];
 
 // export const icons = [

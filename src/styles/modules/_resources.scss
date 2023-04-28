@@ -375,10 +375,11 @@
             padding: 20px 0;
             font-size: 16px;
             display: grid;
-            gap: 20px;
+            // gap: 20px;
             align-items: center;
             height: 70px;
             grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
 
             @media (max-width: $breakpoint-tablet) {
               font-size: 14px;
@@ -391,6 +392,8 @@
               display: flex;
               gap: 30px;
               align-items: center;
+              width: 250px;
+              // border: 2px solid red;
 
               & span {
                 padding: 6px 8px;
@@ -414,6 +417,7 @@
               // justify-content: center;
               text-transform: capitalize;
               font-size: 20px;
+              width: 250px;
               // border: 2px solid red;
 
               & span {
@@ -524,7 +528,7 @@
                 padding: 50px 20px 20px;
               }
 
-              & span {
+              & .icon {
                 position: absolute;
                 top: -18px;
                 left: 40px;
@@ -570,12 +574,17 @@
                 display: flex;
                 align-items: center;
                 gap: 10px;
+                justify-content: space-between;
 
                 @media (max-width: $breakpoint-large) {
                   font-size: 13px;
                 }
                 @media (max-width: $breakpoint-tablet) {
                   font-size: 11px;
+                }
+
+                & .delete-icon {
+                  font-size: 30px;
                 }
               }
             }

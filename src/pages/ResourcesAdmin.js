@@ -8,6 +8,7 @@ import {
   BsFillFileEarmarkExcelFill,
 } from "react-icons/bs";
 import { RiPagesLine } from "react-icons/ri";
+import { MdDelete } from "react-icons/md";
 import {
   getStorage,
   ref,
@@ -18,6 +19,7 @@ import {
   getDownloadURL,
   // storageRef,
 } from "firebase/storage";
+import { deleteFile } from "../utils/helpers";
 // import firebase from "firebase";
 // import "firebase/storage";
 
@@ -233,6 +235,7 @@ const ResourcesAdmin = () => {
         },
         (error) => {
           // Handle unsuccessful uploads
+          console.log(error);
           switch (error.code) {
             case "storage/unauthorized":
               // User doesn't have permission to access the object
@@ -247,7 +250,34 @@ const ResourcesAdmin = () => {
           }
         },
         () => {
-          // Handle successful uploads
+          // add downloadUrl
+          // const modifiedFile = newFiles.map((item) => {
+          //   if (item.name === file.name) {
+          //     let url;
+          //     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          //       // console.log("File available at", downloadURL);
+          //       url = downloadURL;
+          //     });
+          //     return { ...item, url };
+          //   }
+          // });
+
+          // const oldFiles = JSON.parse(localStorage.getItem(`${id}`));
+
+          // console.log(file);
+
+          // const newFile = newFiles.find((item) => item.name === file.name);
+
+          // console.log(newFile, "newFile");
+
+          // const uploadedFiles = [...oldFiles, newFile];
+
+          // console.log("uploaded", uploadedFiles);
+          // setFiles(uploadedFiles);
+
+          // // Handle successful uploads
+          // localStorage.removeItem(`${id}`);
+          // localStorage.setItem(`${id}`, JSON.stringify(uploadedFiles));
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             console.log("File available at", downloadURL);
           });
@@ -312,12 +342,13 @@ const ResourcesAdmin = () => {
                 {/* UPLOAD FILES */}
 
                 <div className="button">
-                  <label htmlFor="upload" className="label">
+                  {/* <label htmlFor="upload" className="label">
                     Select files
-                  </label>
+                  </label> */}
 
                   <button
-                    className="upload-button"
+                    // className="upload-button"
+                    className="label"
                     onClick={() => setIsUploadOpen(true)}
                   >
                     Upload
@@ -404,14 +435,14 @@ const ResourcesAdmin = () => {
                       fileType = "pdf";
                     }
                     return (
-                      <a
+                      <div
                         key={index}
                         className="item"
-                        href={downloadURL}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        // href={downloadURL}
+                        // target="_blank"
+                        // rel="noopener noreferrer"
                       >
-                        <span>
+                        <span className="icon">
                           {fileType === "pdf" ? (
                             <BsFileEarmarkPdfFill />
                           ) : (
@@ -420,9 +451,28 @@ const ResourcesAdmin = () => {
                         </span>
                         <h2>{name}</h2>
                         <p>
-                          <RiPagesLine /> {size}
+                          <span>
+                            <RiPagesLine /> {size}{" "}
+                          </span>
+                          <span>
+                            <a
+                              href={downloadURL}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              open
+                            </a>
+                          </span>
+                          <span
+                            className="delete-icon"
+                            onClick={() =>
+                              deleteFile("new", name, files, setFiles)
+                            }
+                          >
+                            <MdDelete />
+                          </span>
                         </p>
-                      </a>
+                      </div>
                     );
                   })
                 ) : (
@@ -434,7 +484,12 @@ const ResourcesAdmin = () => {
                   </button>
                 )} */}
                 <button className="button">
-                  <span onClick={fetchNextPage}>Load More</span>
+                  <span
+                    onClick={fetchNextPage}
+                    disabled={files.length === allFiles.length}
+                  >
+                    Load More
+                  </span>
                 </button>
               </div>
             </div>
