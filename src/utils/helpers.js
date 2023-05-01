@@ -1,4 +1,5 @@
 import { getStorage, ref, deleteObject } from "firebase/storage";
+import pdfjsLib from "pdfjs";
 
 export const deleteFile = (folder, fileName, files, setFiles) => {
   const storage = getStorage();
@@ -21,4 +22,24 @@ export const deleteFile = (folder, fileName, files, setFiles) => {
   localStorage.removeItem(`${folder}`);
   localStorage.setItem(`${folder}`, JSON.stringify(newFiles));
   setFiles(newFiles);
+};
+
+// Get number of pages of pdf
+export const getPages = (pdfUrl) => {
+  console.log(pdfjsLib, "pdflib");
+  const getNumPages = async (pdfUrl) => {
+    const loadingTask = pdfjsLib.getDocument(pdfUrl);
+    const pdf = await loadingTask.promise;
+    return pdf.numPages;
+  };
+
+  // Usage example
+  // const pdfUrl = 'https://example.com/path/to/my.pdf';
+  getNumPages(pdfUrl)
+    .then((numPages) => {
+      console.log(`The PDF has ${numPages} pages`);
+    })
+    .catch((error) => {
+      console.error("Error getting PDF number of pages:", error);
+    });
 };

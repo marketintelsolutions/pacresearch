@@ -16,8 +16,16 @@ import {
   getMetadata,
   list,
 } from "firebase/storage";
+import { getPages } from "../utils/helpers";
 
 const ResourceDetails = (props) => {
+  // console.log('https://firebasestorage.googleapis.com/v0/b/pacresearch-feb77.appspot.com/o/sectoral%20record%2FAgricultural_Sectorr.pdf?alt=media&token=dccc4bf1-11fb-4b77-9952-c6cdf5e79661')
+  console.log(
+    getPages(
+      "https://firebasestorage.googleapis.com/v0/b/pacresearch-feb77.appspot.com/o/sectoral%20record%2FAgricultural_Sectorr.pdf?alt=media&token=dccc4bf1-11fb-4b77-9952-c6cdf5e79661"
+    )
+  );
+
   //   const userId = props.match.params.id;
   const { id } = useParams();
   const location = useLocation();
@@ -260,7 +268,7 @@ const ResourceDetails = (props) => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <span>
+                        <span className="icon">
                           {fileType === "pdf" ? (
                             <BsFileEarmarkPdfFill />
                           ) : (
