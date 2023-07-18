@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/pacresearch/static/css/main.f8f2e4ca.css",
+    "main.js": "/pacresearch/static/js/main.8d7c95cf.js",
+    "static/media/research.jpg": "/pacresearch/static/media/research.8c7a16e050422bd4327a.jpg",
+    "static/media/analytics.jpg": "/pacresearch/static/media/analytics.9ced7203fafb34fddd44.jpg",
+    "static/media/laptops.jpg": "/pacresearch/static/media/laptops.d655d4d19385c60ae671.jpg",
+    "static/media/contact.webp": "/pacresearch/static/media/contact.0747b94e7018ad13af4a.webp",
+    "static/media/coffee.jpg": "/pacresearch/static/media/coffee.3c844b72a0340330dc2b.jpg",
+    "static/media/clear.jpg": "/pacresearch/static/media/clear.4e498e422af8c253ec39.jpg",
+    "static/media/office.jpg": "/pacresearch/static/media/office.ff2aa6378764a3deaeb3.jpg",
+    "static/media/high.jpg": "/pacresearch/static/media/high.b186716554cea19ba420.jpg",
+    "static/media/flexibility.jpg": "/pacresearch/static/media/flexibility.b87f7c0ec7270a224da4.jpg",
+    "static/media/aboutText.jpg": "/pacresearch/static/media/aboutText.e1c6f42d97f6bf06b787.jpg",
+    "static/media/researchBooks.png": "/pacresearch/static/media/researchBooks.7a0e76228331867f2016.png",
+    "static/media/logic.jpg": "/pacresearch/static/media/logic.54765c1e20c6e048498a.jpg",
+    "static/media/map.jpg": "/pacresearch/static/media/map.b940174addde7a011348.jpg",
+    "static/media/rainbow.png": "/pacresearch/static/media/rainbow.de34f1918d65c893f94d.png",
+    "static/media/pattern.jpg": "/pacresearch/static/media/pattern.b5232f75a7f2836340fb.jpg",
+    "static/media/robustness.jpeg": "/pacresearch/static/media/robustness.536b2170a45c5853268d.jpeg",
+    "static/media/logo_white.png": "/pacresearch/static/media/logo_white.2d1b55831b1e5a32b58d.png",
+    "static/media/transparentEasy.jpeg": "/pacresearch/static/media/transparentEasy.83439739bdae98b25bd6.jpeg",
+    "static/media/logo.png": "/pacresearch/static/media/logo.763d6baf3410127d341a.png",
+    "index.html": "/pacresearch/index.html",
+    "main.f8f2e4ca.css.map": "/pacresearch/static/css/main.f8f2e4ca.css.map",
+    "main.8d7c95cf.js.map": "/pacresearch/static/js/main.8d7c95cf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f8f2e4ca.css",
+    "static/js/main.8d7c95cf.js"
+  ]
+}
