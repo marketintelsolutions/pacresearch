@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./styles/index.css";
 import "./styles/index.scss";
 import App from "./App";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 
 // FIREBASE
 // Import the functions you need from the SDKs you need
