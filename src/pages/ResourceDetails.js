@@ -6,6 +6,7 @@ import { headings } from "../utils/resourcesData";
 import {
   BsFileEarmarkPdfFill,
   BsFillFileEarmarkExcelFill,
+  BsChevronDown,
 } from "react-icons/bs";
 import { RiPagesLine } from "react-icons/ri";
 import {
@@ -17,20 +18,16 @@ import {
   list,
 } from "firebase/storage";
 import { getPages } from "../utils/helpers";
+import {
+  fetchFiles,
+  fetchFirstPage,
+  fetchNextPage,
+} from "../utils/resources/resourcesHelpers";
 
 const ResourceDetails = (props) => {
-  // console.log('https://firebasestorage.googleapis.com/v0/b/pacresearch-feb77.appspot.com/o/sectoral%20record%2FAgricultural_Sectorr.pdf?alt=media&token=dccc4bf1-11fb-4b77-9952-c6cdf5e79661')
-  console.log(
-    getPages(
-      "https://firebasestorage.googleapis.com/v0/b/pacresearch-feb77.appspot.com/o/sectoral%20record%2FAgricultural_Sectorr.pdf?alt=media&token=dccc4bf1-11fb-4b77-9952-c6cdf5e79661"
-    )
-  );
-
-  //   const userId = props.match.params.id;
   const { id } = useParams();
   const location = useLocation();
   const { heading, id: Id } = location.state || {};
-  // console.log(location.state);
 
   const [itemActive, setItemActive] = useState(id - 1);
   const [itemId, setItemId] = useState(Id);
@@ -40,157 +37,43 @@ const ResourceDetails = (props) => {
 
   const [allFiles, setAllFiles] = useState([]);
 
-  console.log(id, "id");
+  const [financeActive, setFinanceActive] = useState(false);
 
   // FETCH ALL FILES
   useEffect(() => {
-    const fetchFiles = () => {
-      // setIsLoading(true);
-      const storage = getStorage();
-      const sectoralRef = ref(storage, `${id}`);
-
-      // List all the files in the "sectoral" folder
-      listAll(sectoralRef)
-        .then((res) => {
-          // Get metadata and download URLs for each file
-          Promise.all(
-            res.items.map((itemRef) =>
-              Promise.all([getMetadata(itemRef), getDownloadURL(itemRef)])
-            )
-          )
-            .then((fileData) => {
-              const files = fileData.map(([metadata, downloadURL]) => ({
-                name: metadata.name,
-                size: metadata.size,
-                type: metadata.contentType,
-                downloadURL,
-              }));
-              setAllFiles(files);
-              // setIsLoading(false);
-            })
-            .catch((error) => {
-              console.error("Error getting metadata and download URLs:", error);
-            });
-        })
-        .catch((error) => {
-          console.error("Error listing files:", error);
-        });
-    };
-    fetchFiles();
+    fetchFiles(
+      getStorage,
+      ref,
+      id,
+      listAll,
+      getMetadata,
+      getDownloadURL,
+      setAllFiles
+    );
   }, [id]);
 
-  // console.log(files, "files");
-
   // FETCH FILES NEW
-  // const [files, setFiles] = useState([]);
   const [pageToken, setPageToken] = useState(null);
 
   const storage = getStorage();
   const listRef = ref(storage, `${id}`);
 
   useEffect(() => {
-    const fetchFirstPage = async () => {
-      // Check if files are already in localStorage
-      const localStorageFiles = localStorage.getItem(`${id}`);
-      console.log(JSON.parse(localStorageFiles), "localStorageFiles");
-      if (localStorageFiles) {
-        setFiles(JSON.parse(localStorageFiles));
-        return;
-      }
-      setIsLoading(true);
-
-      const firstPage = await list(listRef, {
-        maxResults: 10,
-        metadata: ["name", "contentType"],
-      });
-      setPageToken(firstPage.nextPageToken);
-
-      // setFiles(firstPage.items);
-      // setFiles(
-      //   firstPage.items.map((item) => ({
-      //     name: item.name,
-      //     type: item.contentType,
-      //     downloadUrl: getDownloadURL(item),
-      //   }))
-      // );
-      Promise.all(
-        firstPage.items.map((itemRef) =>
-          Promise.all([getMetadata(itemRef), getDownloadURL(itemRef)])
-        )
-      )
-        .then((fileData) => {
-          const files = fileData.map(([metadata, downloadURL]) => ({
-            name: metadata.name,
-            size: metadata.size,
-            type: metadata.contentType,
-            downloadURL,
-          }));
-          setFiles(files);
-          setIsLoading(false);
-
-          // Update localStorage
-          localStorage.setItem(`${id}`, JSON.stringify(files));
-        })
-        .catch((error) => {
-          console.error("Error getting metadata and download URLs:", error);
-        });
-      // console.log(firstPage.items, ".item");
-    };
-
-    fetchFirstPage();
+    fetchFirstPage(
+      id,
+      setFiles,
+      setIsLoading,
+      list,
+      listRef,
+      setPageToken,
+      getMetadata,
+      getDownloadURL
+    );
   }, [id]);
-
-  const fetchNextPage = async () => {
-    if (files.length < allFiles.length) {
-      const nextPage = await list(listRef, {
-        maxResults: 10,
-        pageToken: pageToken,
-      });
-      setPageToken(nextPage.nextPageToken);
-
-      Promise.all(
-        nextPage.items.map((itemRef) =>
-          Promise.all([getMetadata(itemRef), getDownloadURL(itemRef)])
-        )
-      )
-        .then((fileData) => {
-          const newFiles = fileData.map(([metadata, downloadURL]) => ({
-            name: metadata.name,
-            size: metadata.size,
-            type: metadata.contentType,
-            downloadURL,
-          }));
-          setFiles((prevFiles) => [...prevFiles, ...newFiles]);
-          setIsLoading(false);
-
-          // Update localStorage
-          localStorage.setItem(
-            `${id}`,
-            JSON.stringify([...files, ...newFiles])
-          );
-        })
-        .catch((error) => {
-          console.error("Error getting metadata and download URLs:", error);
-        });
-      // setFiles((prevFiles) => [...prevFiles, ...nextPage.items]);
-
-      // localStorage.removeItem(`${id}`);
-
-      // previous local storage items
-      // const prevItems = JSON.parse(localStorage.getItem(`${id}`));
-
-      // Update localStorage
-      // localStorage.setItem(
-      //   `${id}`,
-      //   JSON.stringify([...prevItems, ...nextPage.items])
-      // );
-    }
-  };
 
   useEffect(() => {
     setItemActive(id - 1);
     let item = headings[id - 1];
-    // console.log("hello");
     setItem(item);
   }, [id]);
 
@@ -204,8 +87,6 @@ const ResourceDetails = (props) => {
 
     window.scroll(0, position);
   }, []);
-
-  // console.log(files, "files");
 
   return (
     <div className="resource-details">
@@ -224,8 +105,50 @@ const ResourceDetails = (props) => {
           <div className="content">
             <div className="right">
               {headings.map((item, index) => {
-                const { text, icon } = item;
+                const { text, icon, sub } = item;
 
+                // FOR FINANCIAL MARKET SUMMARY
+                if (sub) {
+                  return (
+                    <div
+                      key={index}
+                      to={`/resources/${text}`}
+                      className="sub-item"
+                    >
+                      <div
+                        className="heading"
+                        onClick={() => setFinanceActive(!financeActive)}
+                      >
+                        <h2>{text}</h2>
+                        <span>
+                          <BsChevronDown />
+                        </span>
+                      </div>
+                      {financeActive && (
+                        <div className="bottom">
+                          <Link
+                            className={`${
+                              "daily" === id ? "item active" : "item"
+                            }`}
+                            to={`/resources/financial market summary daily`}
+                          >
+                            <span>{icon}</span>
+                            <h2>daily</h2>
+                          </Link>
+                          <Link
+                            className={`${
+                              "weekly" === id ? "item active" : "item"
+                            }`}
+                            to={`/resources/financial market summary weekly`}
+                          >
+                            <span>{icon}</span>
+                            <h2>weekly</h2>
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
                 return (
                   <Link
                     key={index}
@@ -291,7 +214,25 @@ const ResourceDetails = (props) => {
                   </button>
                 )} */}
                 <button className="button">
-                  <span onClick={fetchNextPage}>Load More</span>
+                  <span
+                    onClick={() =>
+                      fetchNextPage(
+                        id,
+                        setFiles,
+                        setIsLoading,
+                        list,
+                        listRef,
+                        setPageToken,
+                        getMetadata,
+                        getDownloadURL,
+                        files,
+                        allFiles,
+                        pageToken
+                      )
+                    }
+                  >
+                    Load More
+                  </span>
                 </button>
               </div>
             </div>

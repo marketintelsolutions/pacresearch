@@ -8,44 +8,11 @@ import { VscRunAll } from "react-icons/vsc";
 export const headings = [
   {
     id: 1,
-    text: "sectoral record",
-    icon: <AiOutlineAppstoreAdd />,
-    color: "#15284a",
-    items: [
-      {
-        head: "app development",
-        text: "76 pages",
-      },
-      {
-        head: "web design",
-        text: "16 pages",
-      },
-      {
-        head: "landing page",
-        text: "43 pages",
-      },
-      {
-        head: "business compare",
-        text: "216 pages",
-      },
-      {
-        head: "comerce checkout",
-        text: "706 pages",
-      },
-      {
-        head: "data staging",
-        text: "73 pages",
-      },
-      {
-        head: "campaign store",
-        text: "2976 pages",
-      },
-      {
-        head: "acquisition mitra",
-        text: "376 pages",
-      },
-    ],
+    text: "financial market summary",
+    sub: true,
+    icon: <VscRunAll />,
   },
+
   {
     id: 2,
     text: "equity report",
@@ -250,13 +217,59 @@ export const headings = [
     ],
   },
   {
-    id: 6,
-    text: "all",
+    id: 7,
+    text: "sectoral report",
     icon: <VscRunAll />,
   },
   {
-    id: 7,
-    text: "new",
+    id: 8,
+    text: "sectoral record",
+    icon: <AiOutlineAppstoreAdd />,
+    color: "#15284a",
+    items: [
+      {
+        head: "app development",
+        text: "76 pages",
+      },
+      {
+        head: "web design",
+        text: "16 pages",
+      },
+      {
+        head: "landing page",
+        text: "43 pages",
+      },
+      {
+        head: "business compare",
+        text: "216 pages",
+      },
+      {
+        head: "comerce checkout",
+        text: "706 pages",
+      },
+      {
+        head: "data staging",
+        text: "73 pages",
+      },
+      {
+        head: "campaign store",
+        text: "2976 pages",
+      },
+      {
+        head: "acquisition mitra",
+        text: "376 pages",
+      },
+    ],
+  },
+  {
+    id: 9,
+    text: "SEC Updates",
+    icon: <VscRunAll />,
+  },
+
+  {
+    id: 10,
+    text: "all",
     icon: <VscRunAll />,
   },
 ];

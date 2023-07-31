@@ -82,8 +82,9 @@ const Resources = () => {
               {/* <FetchResources /> */}
 
               {headings.map((item) => {
-                const { text, icon, id, color } = item;
+                const { text, icon, id, color, sub } = item;
                 if (text === "all") return;
+
                 return (
                   <Link to={`/resources/${text}`} key={id} className="item">
                     <span style={{ background: `${color}` }}>{icon}</span>

@@ -314,6 +314,32 @@
             padding: 15px;
           }
 
+          & .sub-item {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            & .heading {
+              display: flex;
+              gap: 30px;
+              padding: 20px;
+              cursor: pointer;
+              align-items: center;
+
+              & h2 {
+                text-transform: capitalize;
+                color: rgb(162, 162, 162);
+                font-size: 20px;
+              }
+            }
+
+            & .bottom {
+              & a {
+                padding-left: 40px;
+              }
+            }
+          }
+
           & .item {
             display: flex;
             gap: 20px;
@@ -321,6 +347,8 @@
             padding: 20px;
             cursor: pointer;
             text-decoration: none;
+
+            // border: 2px solid red;
 
             @media (max-width: $breakpoint-tablet) {
               padding: 18px;
@@ -360,7 +388,8 @@
 
         & .left {
           // border: 2px solid brown;
-          height: 720px;
+          // height: 720px;
+          height: auto;
           width: 100%;
           padding: 20px 40px;
           background: rgb(242, 243, 247);
