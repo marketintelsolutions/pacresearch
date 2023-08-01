@@ -128,7 +128,9 @@ const ResourceDetails = (props) => {
                         <div className="bottom">
                           <Link
                             className={`${
-                              "daily" === id ? "item active" : "item"
+                              "financial market summary daily" === id
+                                ? "item active"
+                                : "item"
                             }`}
                             to={`/resources/financial market summary daily`}
                           >
@@ -137,7 +139,9 @@ const ResourceDetails = (props) => {
                           </Link>
                           <Link
                             className={`${
-                              "weekly" === id ? "item active" : "item"
+                              "financial market summary weekly" === id
+                                ? "item active"
+                                : "item"
                             }`}
                             to={`/resources/financial market summary weekly`}
                           >
