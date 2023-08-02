@@ -34,10 +34,11 @@ export const fetchFirstPage = async (
         size: metadata.size,
         type: metadata.contentType,
         downloadURL,
+        dateCreated: metadata.timeCreated,
       }));
       setFiles(files);
       setIsLoading(false);
-
+      console.log(files);
       // Update localStorage
       localStorage.setItem(`${id}`, JSON.stringify(files));
     })
@@ -79,6 +80,7 @@ export const fetchNextPage = async (
           size: metadata.size,
           type: metadata.contentType,
           downloadURL,
+          dateCreated: metadata.timeCreated,
         }));
         setFiles((prevFiles) => [...prevFiles, ...newFiles]);
         setIsLoading(false);
@@ -133,6 +135,7 @@ export const fetchFiles = (
             size: metadata.size,
             type: metadata.contentType,
             downloadURL,
+            dateCreated: metadata.timeCreated,
           }));
           setAllFiles(files);
           // setIsLoading(false);

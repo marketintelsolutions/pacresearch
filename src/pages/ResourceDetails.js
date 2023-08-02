@@ -23,6 +23,7 @@ import {
   fetchFirstPage,
   fetchNextPage,
 } from "../utils/resources/resourcesHelpers";
+import moment from "moment";
 
 const ResourceDetails = (props) => {
   const { id } = useParams();
@@ -180,7 +181,7 @@ const ResourceDetails = (props) => {
               <div className="bottom">
                 {!isLoading ? (
                   files.map((file, index) => {
-                    const { name, size, downloadURL } = file;
+                    const { name, size, downloadURL, dateCreated } = file;
                     // console.log(file, "file");
                     let fileType;
                     if (name?.endsWith(".pdf")) {
@@ -204,7 +205,8 @@ const ResourceDetails = (props) => {
                         </span>
                         <h2>{name}</h2>
                         <p>
-                          <RiPagesLine /> {size}
+                          <RiPagesLine />{" "}
+                          {moment(dateCreated).format("MMMM Do YYYY")}
                         </p>
                       </a>
                     );
