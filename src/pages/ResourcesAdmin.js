@@ -20,6 +20,11 @@ import {
   // storageRef,
 } from "firebase/storage";
 import { deleteFile } from "../utils/helpers";
+import {
+  fetchFiles,
+  fetchFirstPage,
+  fetchNextPage,
+} from "../utils/resources/resourcesHelpers";
 // import firebase from "firebase";
 // import "firebase/storage";
 
@@ -45,37 +50,15 @@ const ResourcesAdmin = () => {
 
   // FETCH ALL FILES
   useEffect(() => {
-    const fetchFiles = () => {
-      const storage = getStorage();
-      const sectoralRef = ref(storage, `${id}`);
-
-      // List all the files in the "sectoral" folder
-      listAll(sectoralRef)
-        .then((res) => {
-          // Get metadata and download URLs for each file
-          Promise.all(
-            res.items.map((itemRef) =>
-              Promise.all([getMetadata(itemRef), getDownloadURL(itemRef)])
-            )
-          )
-            .then((fileData) => {
-              const files = fileData.map(([metadata, downloadURL]) => ({
-                name: metadata.name,
-                size: metadata.size,
-                type: metadata.contentType,
-                downloadURL,
-              }));
-              setAllFiles(files);
-            })
-            .catch((error) => {
-              console.error("Error getting metadata and download URLs:", error);
-            });
-        })
-        .catch((error) => {
-          console.error("Error listing files:", error);
-        });
-    };
-    fetchFiles();
+    fetchFiles(
+      getStorage,
+      ref,
+      id,
+      listAll,
+      getMetadata,
+      getDownloadURL,
+      setAllFiles
+    );
   }, [id]);
 
   // FETCH FILES NEW
@@ -85,82 +68,17 @@ const ResourcesAdmin = () => {
   const listRef = ref(storage, `${id}`);
 
   useEffect(() => {
-    const fetchFirstPage = async () => {
-      // Check if files are already in localStorage
-      const localStorageFiles = localStorage.getItem(`${id}`);
-      console.log(JSON.parse(localStorageFiles), "localStorageFiles");
-      if (localStorageFiles) {
-        setFiles(JSON.parse(localStorageFiles));
-        return;
-      }
-      setIsLoading(true);
-
-      const firstPage = await list(listRef, {
-        maxResults: 10,
-        metadata: ["name", "contentType"],
-      });
-      setPageToken(firstPage.nextPageToken);
-
-      Promise.all(
-        firstPage.items.map((itemRef) =>
-          Promise.all([getMetadata(itemRef), getDownloadURL(itemRef)])
-        )
-      )
-        .then((fileData) => {
-          const files = fileData.map(([metadata, downloadURL]) => ({
-            name: metadata.name,
-            size: metadata.size,
-            type: metadata.contentType,
-            downloadURL,
-          }));
-          setFiles(files);
-          setIsLoading(false);
-
-          // Update localStorage
-          localStorage.setItem(`${id}`, JSON.stringify(files));
-        })
-        .catch((error) => {
-          console.error("Error getting metadata and download URLs:", error);
-        });
-    };
-
-    fetchFirstPage();
+    fetchFirstPage(
+      id,
+      setFiles,
+      setIsLoading,
+      list,
+      listRef,
+      setPageToken,
+      getMetadata,
+      getDownloadURL
+    );
   }, [id]);
-
-  const fetchNextPage = async () => {
-    if (files.length < allFiles.length) {
-      const nextPage = await list(listRef, {
-        maxResults: 10,
-        pageToken: pageToken,
-      });
-      setPageToken(nextPage.nextPageToken);
-
-      Promise.all(
-        nextPage.items.map((itemRef) =>
-          Promise.all([getMetadata(itemRef), getDownloadURL(itemRef)])
-        )
-      )
-        .then((fileData) => {
-          const newFiles = fileData.map(([metadata, downloadURL]) => ({
-            name: metadata.name,
-            size: metadata.size,
-            type: metadata.contentType,
-            downloadURL,
-          }));
-          setFiles((prevFiles) => [...prevFiles, ...newFiles]);
-          setIsLoading(false);
-
-          // Update localStorage
-          localStorage.setItem(
-            `${id}`,
-            JSON.stringify([...files, ...newFiles])
-          );
-        })
-        .catch((error) => {
-          console.error("Error getting metadata and download URLs:", error);
-        });
-    }
-  };
 
   useEffect(() => {
     setItemActive(id - 1);
@@ -250,34 +168,6 @@ const ResourcesAdmin = () => {
           }
         },
         () => {
-          // add downloadUrl
-          // const modifiedFile = newFiles.map((item) => {
-          //   if (item.name === file.name) {
-          //     let url;
-          //     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          //       // console.log("File available at", downloadURL);
-          //       url = downloadURL;
-          //     });
-          //     return { ...item, url };
-          //   }
-          // });
-
-          // const oldFiles = JSON.parse(localStorage.getItem(`${id}`));
-
-          // console.log(file);
-
-          // const newFile = newFiles.find((item) => item.name === file.name);
-
-          // console.log(newFile, "newFile");
-
-          // const uploadedFiles = [...oldFiles, newFile];
-
-          // console.log("uploaded", uploadedFiles);
-          // setFiles(uploadedFiles);
-
-          // // Handle successful uploads
-          // localStorage.removeItem(`${id}`);
-          // localStorage.setItem(`${id}`, JSON.stringify(uploadedFiles));
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             console.log("File available at", downloadURL);
           });
@@ -427,21 +317,15 @@ const ResourcesAdmin = () => {
               <div className="bottom">
                 {!isLoading ? (
                   files.map((file, index) => {
-                    const { name, size, downloadURL } = file;
-                    // console.log(file, "file");
+                    const { name, size, downloadURL, dateCreated } = file;
+
                     let fileType;
                     if (name?.endsWith(".pdf")) {
-                      // console.log("I love you");
                       fileType = "pdf";
                     }
+
                     return (
-                      <div
-                        key={index}
-                        className="item"
-                        // href={downloadURL}
-                        // target="_blank"
-                        // rel="noopener noreferrer"
-                      >
+                      <div key={index} className="item">
                         <span className="icon">
                           {fileType === "pdf" ? (
                             <BsFileEarmarkPdfFill />
@@ -452,7 +336,7 @@ const ResourcesAdmin = () => {
                         <h2>{name}</h2>
                         <p>
                           <span>
-                            <RiPagesLine /> {size}{" "}
+                            <RiPagesLine /> {dateCreated}{" "}
                           </span>
                           <span>
                             <a
@@ -485,7 +369,21 @@ const ResourcesAdmin = () => {
                 )} */}
                 <button className="button">
                   <span
-                    onClick={fetchNextPage}
+                    onClick={() =>
+                      fetchNextPage(
+                        id,
+                        setFiles,
+                        setIsLoading,
+                        list,
+                        listRef,
+                        setPageToken,
+                        getMetadata,
+                        getDownloadURL,
+                        files,
+                        allFiles,
+                        pageToken
+                      )
+                    }
                     disabled={files.length === allFiles.length}
                   >
                     Load More
