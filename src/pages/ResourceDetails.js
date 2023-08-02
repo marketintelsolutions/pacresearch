@@ -8,7 +8,7 @@ import {
   BsFillFileEarmarkExcelFill,
   BsChevronDown,
 } from "react-icons/bs";
-import { RiPagesLine } from "react-icons/ri";
+import { MdDateRange } from "react-icons/md";
 import {
   getStorage,
   ref,
@@ -205,7 +205,7 @@ const ResourceDetails = (props) => {
                         </span>
                         <h2>{name}</h2>
                         <p>
-                          <RiPagesLine />{" "}
+                          <MdDateRange />{" "}
                           {moment(dateCreated).format("MMMM Do YYYY")}
                         </p>
                       </a>
