@@ -221,46 +221,46 @@ export const headings = [
     text: "sectoral report",
     icon: <VscRunAll />,
   },
-  {
-    id: 8,
-    text: "sectoral record",
-    icon: <AiOutlineAppstoreAdd />,
-    color: "#15284a",
-    items: [
-      {
-        head: "app development",
-        text: "76 pages",
-      },
-      {
-        head: "web design",
-        text: "16 pages",
-      },
-      {
-        head: "landing page",
-        text: "43 pages",
-      },
-      {
-        head: "business compare",
-        text: "216 pages",
-      },
-      {
-        head: "comerce checkout",
-        text: "706 pages",
-      },
-      {
-        head: "data staging",
-        text: "73 pages",
-      },
-      {
-        head: "campaign store",
-        text: "2976 pages",
-      },
-      {
-        head: "acquisition mitra",
-        text: "376 pages",
-      },
-    ],
-  },
+  // {
+  //   id: 8,
+  //   text: "sectoral record",
+  //   icon: <AiOutlineAppstoreAdd />,
+  //   color: "#15284a",
+  //   items: [
+  //     {
+  //       head: "app development",
+  //       text: "76 pages",
+  //     },
+  //     {
+  //       head: "web design",
+  //       text: "16 pages",
+  //     },
+  //     {
+  //       head: "landing page",
+  //       text: "43 pages",
+  //     },
+  //     {
+  //       head: "business compare",
+  //       text: "216 pages",
+  //     },
+  //     {
+  //       head: "comerce checkout",
+  //       text: "706 pages",
+  //     },
+  //     {
+  //       head: "data staging",
+  //       text: "73 pages",
+  //     },
+  //     {
+  //       head: "campaign store",
+  //       text: "2976 pages",
+  //     },
+  //     {
+  //       head: "acquisition mitra",
+  //       text: "376 pages",
+  //     },
+  //   ],
+  // },
   {
     id: 9,
     text: "SEC Updates",

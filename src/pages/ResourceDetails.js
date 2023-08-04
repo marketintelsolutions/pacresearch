@@ -106,7 +106,7 @@ const ResourceDetails = (props) => {
           <div className="content">
             <div className="right">
               {headings.map((item, index) => {
-                const { text, icon, sub } = item;
+                const { text, icon, sub, main } = item;
 
                 // FOR FINANCIAL MARKET SUMMARY
                 if (sub) {
@@ -161,7 +161,7 @@ const ResourceDetails = (props) => {
                     to={`/resources/${text}`}
                   >
                     <span>{icon}</span>
-                    <h2>{text}</h2>
+                    <h2>{main || text}</h2>
                   </Link>
                 );
               })}
