@@ -129,11 +129,11 @@ const ResourceDetails = (props) => {
                         <div className="bottom">
                           <Link
                             className={`${
-                              "financial market summary daily" === id
+                              "daily financial market record" === id
                                 ? "item active"
                                 : "item"
                             }`}
-                            to={`/resources/financial market summary daily`}
+                            to={`/resources/daily financial market record`}
                           >
                             <span>{icon}</span>
                             <h2>daily</h2>

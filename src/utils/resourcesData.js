@@ -96,46 +96,46 @@ export const headings = [
       },
     ],
   },
-  {
-    id: 4,
-    text: "daily financial market record",
-    icon: <SiOnlyoffice />,
-    color: "#09aff4",
-    items: [
-      {
-        head: "client development",
-        text: "776 pages",
-      },
-      {
-        head: "client design",
-        text: "166 pages",
-      },
-      {
-        head: "client page",
-        text: "343 pages",
-      },
-      {
-        head: "client compare",
-        text: "216 pages",
-      },
-      {
-        head: "comerce checkout",
-        text: "706 pages",
-      },
-      {
-        head: "data staging",
-        text: "73 pages",
-      },
-      {
-        head: "campaign store",
-        text: "2976 pages",
-      },
-      {
-        head: "acquisition mitra",
-        text: "376 pages",
-      },
-    ],
-  },
+  // {
+  //   id: 4,
+  //   text: "daily financial market record",
+  //   icon: <SiOnlyoffice />,
+  //   color: "#09aff4",
+  //   items: [
+  //     {
+  //       head: "client development",
+  //       text: "776 pages",
+  //     },
+  //     {
+  //       head: "client design",
+  //       text: "166 pages",
+  //     },
+  //     {
+  //       head: "client page",
+  //       text: "343 pages",
+  //     },
+  //     {
+  //       head: "client compare",
+  //       text: "216 pages",
+  //     },
+  //     {
+  //       head: "comerce checkout",
+  //       text: "706 pages",
+  //     },
+  //     {
+  //       head: "data staging",
+  //       text: "73 pages",
+  //     },
+  //     {
+  //       head: "campaign store",
+  //       text: "2976 pages",
+  //     },
+  //     {
+  //       head: "acquisition mitra",
+  //       text: "376 pages",
+  //     },
+  //   ],
+  // },
   {
     id: 5,
     text: "daily price list",
