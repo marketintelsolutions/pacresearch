@@ -29,16 +29,19 @@ export const fetchFirstPage = async (
     )
   )
     .then((fileData) => {
-      const files = fileData.map(([metadata, downloadURL]) => ({
-        name: metadata.name,
-        size: metadata.size,
-        type: metadata.contentType,
-        downloadURL,
-        dateCreated: metadata.timeCreated,
-      }));
+      const files = fileData.map(([metadata, downloadURL]) => {
+        console.log(metadata, "metadata");
+        return {
+          name: metadata.name,
+          size: metadata.size,
+          type: metadata.contentType,
+          downloadURL,
+          dateCreated: metadata.timeCreated,
+        };
+      });
       setFiles(files);
       setIsLoading(false);
-      console.log(files);
+      // console.log(files);
       // Update localStorage
       localStorage.setItem(`${id}`, JSON.stringify(files));
     })
