@@ -2,13 +2,12 @@
   // background: var(--primary-blue);
 
   & .section-one {
-    // border: 2px solid red;
 
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
-    min-height: 100vh;
+    max-height: 100vh;
     padding: 0 40px;
 
     // backgroun
@@ -30,7 +29,7 @@
     }
 
     & .center {
-      max-width: var(--width-standard);
+    max-width: var(--width-standard);
       min-height: 521px;
       margin: 0 auto;
       display: grid;
@@ -52,7 +51,9 @@
       gap: 40px;
       padding: 190px 0 100px;
       z-index: 3;
-      // border: 2px solid red;
+      height: 100%;
+      // border: 2px solid blue;
+      max-width: 500px;
 
       @media (max-width: $breakpoint-large) {
         // width: 100%;
@@ -139,9 +140,9 @@
         a {
           font-size: 1.15rem;
           border: 2px solid var(--primary-blue-200);
-          border-radius: 0.25rem;
-          border-bottom-left-radius: 1rem;
-          border-top-right-radius: 1rem;
+          border-radius: 10px;
+          // border-bottom-left-radius: 1rem;
+          // border-top-right-radius: 1rem;
           text-transform: capitalize;
           transition: var(--transition);
           padding: 12px 36px;
@@ -175,9 +176,17 @@
 
     & .right {
       z-index: 3;
+      // border: 2px solid red;
+      height: 100%;
+      display: flex;
+      padding: 190px 0 100px;
+      justify-content: center;
+      align-items: center;
+
       @media (max-width: $breakpoint-large) {
         display: none;
       }
+
       & .image {
         display: flex;
         width: 100%;

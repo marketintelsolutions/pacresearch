@@ -21,7 +21,7 @@ const Services = () => {
         <div className="content">
           <div className="top">
             <div className="left">
-              <Heading text="services" />
+              {/* <Heading text="services" /> */}
               <h1>services we offer</h1>
               <p>
                 Leverage our partnership with industry-leading data providers,

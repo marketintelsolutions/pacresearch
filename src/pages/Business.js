@@ -20,7 +20,7 @@ const Business = () => {
       <PageHeader text="business processes" />
       <section className="section-two">
         <div className="content-center">
-          <Heading text="business processes" />
+          {/* <Heading text="business processes" /> */}
           <p>
             Deep understanding of industries across economies and leading
             through on diverse subjects.

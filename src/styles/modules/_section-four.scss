@@ -9,7 +9,7 @@
     position: relative;
 
     & .content-center {
-      // border: 2px solid blue;
+      border: 2px solid blue;
       gap: 50px;
       max-width: var(--width-standard);
       display: flex;
@@ -76,7 +76,7 @@
     }
 
     & .content {
-      // border: 2px solid blue;
+      border: 2px solid blue;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 30px;
@@ -97,6 +97,8 @@
         padding: 20px 15px;
         position: relative;
         z-index: 3;
+        // align-items: center;
+        justify-content: center;
 
         @media (max-width: $breakpoint-large) {
           width: 300px;

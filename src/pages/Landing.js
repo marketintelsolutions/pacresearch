@@ -13,6 +13,7 @@ import ServiceItem from "../components/ServiceItem";
 import { aboutItems, businessHome, services } from "../utils/data";
 import { Link } from "react-router-dom";
 import pattern from "../assets/images/pattern.jpg";
+import researchHome from "../assets/images/researchHome.jpg";
 import ParticlesBg from "../components/Particles";
 
 const Landing = () => {
@@ -70,13 +71,14 @@ const Landing = () => {
           <div className="top">
             <div className="left">
               <Heading text="services" />
+              <img src={researchHome} alt="researchHome" />
+            </div>
+            <div className="right">
               <h1>services we offer</h1>
               <p>
                 Leverage our partnership with industry-leading data providers,
                 people, tools and methodologies to provide world-class service.
               </p>
-            </div>
-            <div className="right">
               <Link to="/services">
                 {" "}
                 see all services <BsArrowRight />

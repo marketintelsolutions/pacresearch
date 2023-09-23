@@ -43,7 +43,7 @@
         & .all {
           display: flex;
           flex-direction: column;
-          gap: 50px;
+          gap: 20px;
           justify-content: center;
           align-items: center;
           padding: 50px;
@@ -215,13 +215,16 @@
               display: flex;
               flex-direction: column;
               gap: 10px;
-              align-items: flex-end;
-              width: 220px;
+              align-items: flex-start; 
+              // border: 2px solid blue;
+              // text-align: ;
+              width: 150px;
+
               & h2 {
                 text-transform: capitalize;
                 z-index: 3;
                 // border: 2px solid red;
-                text-align: right;
+                text-align: left;
                 height: 60px;
 
                 @media (max-width: $breakpoint-large) {

@@ -187,7 +187,8 @@
     gap: 90px;
 
     & .heading {
-      width: var(--width-standard);
+      // width: var(--width-standard);
+      width: fit-content;
       margin: 0 auto;
     }
 

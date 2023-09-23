@@ -4,7 +4,7 @@
   letter-spacing: 1px;
   position: relative;
   text-transform: uppercase;
-  padding: 0 10px;
+  // padding: 0 10px;
   width: max-content;
   color: var(--primary-blue-200);
 
@@ -15,29 +15,29 @@
     font-size: 0.6rem;
   }
 
-  &:before,
-  &:after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    width: 6px;
-    aspect-ratio: 1/1;
-    border-radius: 1rem;
-    top: 50%;
-    translate: 0 -50%;
-    background-color: var(--primary-blue-200);
+  // &:before,
+  // &:after {
+  //   content: "";
+  //   display: inline-block;
+  //   position: absolute;
+  //   width: 6px;
+  //   aspect-ratio: 1/1;
+  //   border-radius: 1rem;
+  //   top: 50%;
+  //   translate: 0 -50%;
+  //   background-color: var(--primary-blue-200);
 
-    @media (max-width: $breakpoint-large) {
-      width: 5px;
-    }
-    @media (max-width: $breakpoint-tablet) {
-      width: 4px;
-    }
-  }
-  &:before {
-    left: 0;
-  }
-  &:after {
-    right: 0;
-  }
+  //   @media (max-width: $breakpoint-large) {
+  //     width: 5px;
+  //   }
+  //   @media (max-width: $breakpoint-tablet) {
+  //     width: 4px;
+  //   }
+  // }
+  // &:before {
+  //   left: 0;
+  // }
+  // &:after {
+  //   right: 0;
+  // }
 }

@@ -23,7 +23,7 @@ const About = () => {
       <section className="section-two">
         <div className="content">
           <div className="left">
-            <Heading text="about us" />
+            {/* <Heading text="about us" /> */}
 
             <h1> intellectually curious, imaginative & analytical</h1>
             <p>
@@ -54,7 +54,7 @@ const About = () => {
         <div className="content">
           <div className="left">
             <img src={office} alt="people" className="people" />
-            <img src={aboutText} alt="research" className="research" />
+            {/* <img src={aboutText} alt="research" className="research" /> */}
           </div>
           <div className="right">
             <h3>WHO WE ARE</h3>
@@ -85,7 +85,7 @@ const About = () => {
                   </p>
                 </div>
               </div>
-              <div className="objectives item">
+              <div className="goal item">
                 <div className="icon">
                   <IoMdListBox />
                 </div>
@@ -96,12 +96,14 @@ const About = () => {
                       To produce timely, creative and comprehensive research in
                       the industry that is built on integrity, objectivity and
                       exceptional service.
-                    </span>
-                    <span>
+                      <br />
                       To deliver innovative research products in our industry
                       and be among the best research experts in our focus
                       sectors.
                     </span>
+                    {/* <span>
+                      
+                    </span> */}
                   </p>
                 </div>
               </div>
@@ -160,8 +162,9 @@ const About = () => {
       >
         {aboutMore.map((i, index) => {
           const { icon, heading, items } = i;
-          return (
-            <div key={index} className="main">
+
+          if (index === aboutMore.length - 1) {
+            return <div key={index} className="main">
               <span>{icon}</span>
               <h2>{heading}</h2>
               <hr />
@@ -171,6 +174,22 @@ const About = () => {
                 ))}
               </div>
             </div>
+          }
+          return (
+            <>
+              <div key={index} className="main">
+                <span>{icon}</span>
+                <h2>{heading}</h2>
+                <hr />
+                <div className="items">
+                  {items.map((item, index) => (
+                    <p key={index}>{item}</p>
+                  ))}
+                </div>
+              </div>
+              {/* <br /> */}
+              <div className="line"></div>
+            </>
           );
         })}
       </section>
